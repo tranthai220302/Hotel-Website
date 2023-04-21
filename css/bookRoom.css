@@ -1,0 +1,319 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-image: url('../image/home/31.jpg');
+	background-position:0px -100px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  td ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  td button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  td button:hover {
+    background-color: #3e8e41;
+  }
+  
+  
+  .modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  /* Style cho nội dung của modal */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* Style cho nút đóng modal */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .room {
+    display: flex;
+    margin-bottom: 50px;
+  }
+  
+  .room img {
+    width: 50%;
+    height: auto  ;
+  }
+  
+  .room-description {
+    width: 50%;
+    padding: 20px;
+    font-size: 18px;
+  }
+  .imgbody{
+
+  }
+  .room-description h2 {
+    margin-top: 0;
+  }
+  
+  .room-description ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .room-description ul li:before {
+    content: "✓ ";
+  }
+  
+  .room-description .price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #3e8e41;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .link{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    left: 517px;
+    bottom: 30px;
+  }
+  .link1{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    position: relative;
+  }
+
+  button:hover {
+    background-color: #3e8e41;
+  }
+  .out{
+    position: relative;
+    left: 517px;
+    bottom: 36px;
+  }
+  /*nacc*/
+  .header {
+      background-color: #003580;
+      color: white;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      
+    }
+    
+    .headerContainer {
+      width: 100%;
+      max-width: 1024px;
+      margin: 20px 0px 100px 0px;
+    }
+    
+    .headerContainer.listMode {
+      margin: 20px 0px 0px 0px;
+    }
+    
+    .headerList {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    
+    .headerListItem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .headerListItem.active {
+      border: 1px solid white;
+      padding: 10px;
+      border-radius: 20px;
+    }
+    
+    .headerDesc {
+      margin: 20px 0px;
+    }
+    
+    .headerBtn {
+      background-color: #0071c2;
+      color: white;
+      font-weight: 500;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+    
+    .headerSearch {
+      height: 30px;
+      background-color: white;
+      border: 3px solid #febb02;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px 0px;
+      border-radius: 5px;
+      position: absolute;
+      bottom: -25px;
+      width: 100%;
+      max-width: 1024px;
+    }
+    
+    .headerIcon {
+      color: lightgray;
+    }
+    
+    .headerSearchItem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .headerSearchInput {
+      border: none;
+      outline: none;
+    }
+    
+    .headerSearchText {
+      color: lightgray;
+      cursor: pointer;
+    }
+  
+    /*nava*/
+    .navbar{
+      height: 50px;
+      background-color: #003580;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .navContainer{
+      width: 100%;
+      max-width: 1024px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo{
+      font-weight: 500;
+    }
+    
+    .navButton{
+      margin-left: 20px;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      color: #003580;
+    }
+    .btn{
+      display: flex;
+      justify-content: space-between;
+    }
+    .des{
+        font-size: 16px;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Số dòng hiển thị */
+        -webkit-box-orient: vertical; /* Hướng của các box */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 300;
+        font-style: italic;
+        margin: auto;
+        margin-top: 10px;
+    }

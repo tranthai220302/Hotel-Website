@@ -5,14 +5,30 @@
         private $email;
         private $password;
         private $isAdmin;
+        private $address;
+        private $phoneNumber;
+        private $img;
+        private $firstName;
+        private $lastName;
+        private $numRoom;
             
-        public function __construct($id, $username, $password, $email, $isAdmin)
+        public function __construct($id, $username, $password, $email, $isAdmin, $address, $phoneNumber, $img, $firstName, $lastName,$numRoom)
         {
             $this->id = $id;
             $this->username = $username;
             $this->password = $password;
             $this->email = $email;
             $this->isAdmin = $isAdmin;    
+            $this->address = $address;
+            $this->phoneNumber = $phoneNumber;
+            $this->img = $img;
+            $this->firstName = $firstName;
+            $this->lastName = $lastName;
+            $this->numRoom = $numRoom;
+        }
+        public function getnumRoom()
+        {
+            return $this->numRoom;
         }
         public function getId() {
             return $this->id;
@@ -35,5 +51,27 @@
         public function setPassword($password) {
             $this->password = $password;   
         }
+        public function getAddress() 
+        {
+           return  $this->address;
+        }
+        public function getPhone()
+        {
+            return $this->phoneNumber;
+        }
+        public function getImg()
+        {
+            return $this->img;
+        }
+        public function getFirstName()
+        {
+            return $this->firstName;
+        }
+
+        public function getLastName()
+        {
+            return $this->lastName;
+        }
+
     }
 ?>

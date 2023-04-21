@@ -1,15 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "username";
-$password = "password";
-
-// Create connection
-$conn = mysqli_connect("localhost", "root", "", "quanlyks");
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-mysqli_close($conn);
+    //Khai báo kết nối
+    $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+    //Lựa chọn cơ sở dữ liệu
+    mysqli_select_db($con,"quanlyks");
 ?>

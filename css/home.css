@@ -30,6 +30,7 @@ a {
 }
 
 /*--------------header--------*/
+
 header {
   height: 8vh;
 }
@@ -48,7 +49,9 @@ header nav {
 .hambuger {
   display: none;
 }
-
+.slide{
+  width: 100%;
+}
 .bar {
   display: block;
   width: 25px;
@@ -212,18 +215,23 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
+  height: 100%;
 }
 
 .book {
-  margin-top: 5%;
+
   width: 100%;
-  height: 20vh;
+  height: 50px;
   color: white;
+
 }
 
 .book .input {
-  background: #242e5a;
-  padding: 20px 20px 40px 20px;
+  background: #263760;
+  padding: 10px 20px 20px 20px;
+  border-radius: 20px;
+  border: solid 3px yellow;
+  margin-left: 25%;
 }
 
 .book .search {
@@ -237,8 +245,9 @@ input {
   border: 2px solid rgba(255, 255, 255, 0.1);
   outline: none;
   background: #263760;
-  margin-top: 20px;
+  margin-top: 5px;
   color: white;
+  border-radius: 10px;
 }
 
 ::placeholder {
@@ -250,11 +259,14 @@ input {
 }
 
 .book .search input {
-  background: none;
-  border: none;
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 40px;
+  width: 15%;
+padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  background: #263760;
+  margin-top: 20px;
+  color: white;
+  height: 100%;
 }
 
 /*--------------book--------*/
@@ -695,4 +707,41 @@ footer li:hover {
   margin-bottom: 10px;
   color: #003580;
   cursor: pointer;
+}
+.book .input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book .box {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.book .box:last-child {
+  margin-right: 0;
+}
+
+
+
+
+.submit{
+  width: 15%;
+padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  background: #263760;
+  margin-top: 20px;
+  color: white;
+  height: 100%;
+}
+.numStar{
+  width: 100%;
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  background: #263760;
+  margin-top: 5px;
+  color: white;
+  border-radius: 10px;
 }
