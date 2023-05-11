@@ -7,7 +7,8 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <title>Hotel Website</title>
+  <link rel="icon" href="../image/icon.png">
+  <title>Sochi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/home.css">
   <link rel="stylesheet" href="../css/home1.css">
@@ -40,16 +41,12 @@
     <div class="container">
       <nav>
         <a href="#" class="logo"> <img src="../image/home/logo.png" alt=""> </a>
-        <img src="../../Hotel-Website/img" alt="" class="avatar">
         <ul class="nav-menu">
           <li> <a href="#home" class="nav-link">Home</a> </li>
           <li> <a href="#about" class="nav-link">About</a> </li>
-          <li> <a href="#rooms" class="nav-link">Rooms</a> </li>
-          <li> <a href="#restaurant" class="nav-link">Restaurant</a> </li>
-          <li> <a href="#gallery" class="nav-link">Gallery</a> </li>
-          <li> <a href="#contact" class="nav-link">Contact</a>
+          <li> <a href="#room" class="nav-link">Rooms</a> </li>
+          <li> <a href="#map" class="nav-link">Map</a> </li>
           <a href="../Controllers/CityController.php?action=listHotel"></a>
-          <img src="../../Hotel-Website/image/$srcImg" alt='' class='avatar'>
           <?php 
           if(!isset($isAdmin))
           {
@@ -80,7 +77,7 @@
               <img src='../../Hotel-Website/image/user/".$srcImg."' alt='' class='avatar'>
               </div>
               <ul class='menu'>
-                  <li><a href='../Views/User/ThongtinUser.php'>Thong tin ngươi dùng</a></li>
+                  <li><a href='../Views/User/ThongtinUser.php'>Thông tin ngươi dùng</a></li>
                   <li><a href='../Controllers/RoomController.php?action=getRoombyUser&id=".$idUser."'>Xem phòng đã đặt</a></li>
                   <li><a href='../Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
               </ul>
@@ -89,12 +86,6 @@
             }
           ?>
         </ul>
-
-        <div class="hambuger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
       </nav>
     </div>
   </header>
@@ -129,10 +120,10 @@
   <!-- gioi thieu -->
   <form action="../../Hotel-Website/Controllers/HotelController.php?action=search" method="post">
   <section class="book">
-    <div class="container flex">
+    <div class="flex">
       <div class="input grid">
       <div class="box">
-          <label style="color: black;">City</label>
+          <label style="color: white;">City</label>
           <select class="numStar" name="City" required>
           <option value="">Select City</option>
           <?php
@@ -155,24 +146,24 @@
           </select>
         </div>
         <div class="box">
-          <label style="color: black;">Check-in</label>
+          <label style="color: white;">Check-in</label>
           <input type="date" placeholder="Check-in-Date" name = 'Startdate' require>
         </div>
         <div class="box">
-          <label style="color: black;">Check-out</label>
+          <label style="color: white;">Check-out</label>
           <input type="date" placeholder="Check-out-Date" name = 'Enddate' require>
         </div>
         <div class="box">
-          <label style="color: black;">Adults</label> <br>
+          <label style="color: white;">Adults</label> <br>
           <input type="number" placeholder="0" name = 'Adults' require>
         </div>
         <div class="box">
-          <label style="color: black;">Children</label> <br>
+          <label style="color: white;">Children</label> <br>
           <input type="number" placeholder="0" name = 'Childrens' require>
         </div>
         <div class="box">
         <label style="color: #263760">Children</label> <br>
-          <input type="submit" value="SEARCH">
+          <input class="btn" type="submit" value="SEARCH">
         </div>
       </div>
 
@@ -206,7 +197,7 @@
       <div class="heading_top flex1">
         <div class="heading">
           <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-          <h2>Rooms $ Suites</h2>
+          <h2>Rooms & Suites</h2>
         </div>
       </div>
       <div class="featured">
@@ -255,7 +246,7 @@
     </div>
     <!-- gioi thiueu -->
   </section>
-  <section class="wrapper wrapper2 top">
+  <!-- <section class="wrapper wrapper2 top">
     <div class="container">
       <div class="text">
         <div class="heading">
@@ -278,102 +269,7 @@
         </div>
       </div>
     </div>
-  </section>
-  <!-- list kieu khach san -->
-  <div class="heading_top_1" style="margin-top: 6%; ">
-    <div class="heading">
-      <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-      <h2>Rooms $ Suites</h2>
-    </div>
-  </div>
-  <div class="pList">
-    
-    <?php
-    if(isset($arr['Hotels']))
-    {
-      foreach($arr['Hotels'] as $hotel)
-      {
-        echo "
-        <a href='../Controllers/HotelController.php?action=getHotelHome&id=".$hotel->getidHotel()."'>
-          <div class='pListItem'>
-            <img
-              src='../image/hotel/".$hotel->getImg()."'
-              alt=''
-              class='pListImg'
-            />
-            <div class='pListTitles'>
-              <h1>".$hotel->getnameHotel()."</h1>
-              <h2>".$hotel->getnumStart()."<i class='fa-solid fa-star' style='color: yellow;'></i></h2>
-            </div>
-          </div>
-          </a>";
-      }
-    }else{
-      include_once('../Views/homedata.php');
-      foreach($arr['Hotels'] as $hotel)
-      {
-        echo "
-        <a href='../Controllers/HotelController.php?action=getHotelHome&id=".$hotel->getidHotel()."'>
-          <div class='pListItem'>
-            <img
-              src='../image/hotel/".$hotel->getImg()."'
-              alt=''
-              class='pListImg'
-            />
-            <div class='pListTitles'>
-              <h1>".$hotel->getnameHotel()."</h1>
-              <h2>".$hotel->getnumStart()."<i class='fa-solid fa-star' style='color: yellow;'></i></h2>
-            </div>
-          </div>
-          </a>";
-      } 
-    }
-    ?>
-  </div>
-  <!-- gioi thieu danh sach khach san gia re -->
-  <section class="wrapper top">
-    <div class="container">
-      <div class="text">
-        <h2>Our Amenities</h2>
-        <p>Tại khách sạn còn có phà hàng và quán cà phê tiện lợi cho nhu cầu của khách đặt phòng.Tại đây có có phòng họp và phòng hội nghị lớn có thể chứa đến hơn 1000 người. Khi đặt phòng tại Equatorial, quý khách hàng còn có thể tham gia trung tâm thể thao đẳng cấp thế giới với hồ bơi ngoài trời, phòng thể hình và quầy bar nổi trên mặt nước.Lựa chọn cho mình một khách sạn tuyệt vời bạn sẽ có một kỳ nghỉ xứng đáng. </p>
-
-        <div class="content">
-          <div class="box flex">
-            <i class="fas fa-swimming-pool"></i>
-            <span>Swimming pool</span>
-          </div>
-          <div class="box flex">
-            <i class="fas fa-dumbbell"></i>
-            <span>Gym & yogo</span>
-          </div>
-          <div class="box flex">
-            <i class="fas fa-spa"></i>
-            <span>Spa & massage</span>
-          </div>
-          <div class="box flex">
-            <i class="fas fa-ship"></i>
-            <span>Boat Tours</span>
-          </div>
-          <div class="box flex">
-            <i class="fas fa-swimmer"></i>
-            <span>Surfing Lessons</span>
-          </div>
-          <div class="box flex">
-            <i class="fas fa-microphone"></i>
-            <span>Conference room</span>
-          </div>
-          <div class="box flex">
-            <i class="fas fa-water"></i>
-            <span>Diving & smorking</span>
-          </div>
-          <div class="box flex">
-            <i class="fas fa-umbrella-beach"></i>
-            <span>Private Beach</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </section> -->
 
   <!-- danh sach khach san gia re -->
 
@@ -402,7 +298,7 @@
     })
   </script>
 <!-- map -->
-  <section class="map top">
+  <section class="map top" id="map">
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14131.036667732067!2d85.32395955!3d27.69383745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1637755481449!5m2!1sen!2snp" width="600" height="450" style="border:0;"
       allowfullscreen="" loading="lazy"></iframe>
   </section>
@@ -450,7 +346,6 @@
           <li class="fListItem">Terms & conditions</li>
         </ul>
       </div>
-      <div class="fText">Copyright © 2022 Lamabooking.</div>
     </div>
   </footer>
 </body>

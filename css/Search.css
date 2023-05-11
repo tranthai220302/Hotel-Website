@@ -1,5 +1,5 @@
 .header {
-    background-color: #003580;
+    background-color: #263760;
     color: white;
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@
   }
   
   .headerBtn {
-    background-color: #0071c2;
+    background-color: #263760;
     color: white;
     font-weight: 500;
     border: none;
@@ -85,7 +85,7 @@
   /*nava*/
   .navbar{
     height: 50px;
-    background-color: #003580;
+    background-color: #263760;
     display: flex;
     justify-content: center;
   }
@@ -108,7 +108,7 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    color: #003580;
+    color: #263760;
   }
   /*lis*/
   .listContainer {
@@ -128,7 +128,7 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    color: #003580;
+    color: #263760;
   }
   .btn{
 	display: flex;
@@ -321,7 +321,7 @@
   
   .listSearch>button{
     padding: 10px;
-    background-color: #0071c2;
+    background-color: #263760;
     color: white;
     border: none;
     width: 100%;
@@ -358,7 +358,7 @@
 
 .siTitle {
   font-size: 20px;
-  color: #0071c2;
+  color: #263760;
 }
 
 .siDistance {
@@ -410,7 +410,7 @@
   font-weight: 500;
 }
 .siRating>button{
- background-color: #003580;
+ background-color: #263760;
  color: white;
  padding: 5px;
  font-weight: bold;
@@ -434,7 +434,7 @@
 }
 
 .siCheckButton{
-  background-color: #0071c2;
+  background-color: #263760;
   color: white;
   font-weight: bold;
   padding: 10px 5px;

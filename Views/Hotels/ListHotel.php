@@ -14,9 +14,10 @@
 </style>
 <body>
 <div class="navbar">
-		<div class="navContainer">
-		<a href="../../../Hotel-Website/Controllers/UserController.php?action=home"><span class="logo" style="color: black;">Sochi</span></a>
-		  <?php
+	<div class="navContainer">
+		<a href="../../../Hotel-Website/Controllers/UserController.php?action=home">class="logo"> <img src="../image/home/logo.png" alt=""></a>
+		<!-- <a href="#" class="logo"> <img src="../image/home/logo.png" alt=""> </a> -->
+		<?php
           if($_SESSION['user']['isAdmin'] == 1)
           {
            
@@ -46,9 +47,9 @@
             </ul>
           </div>";
           }
-      ?>
-		</div>
-	  </div>
+        ?>
+	</div>
+</div>
 		<div class="header">
 			<div class= "headerContainer listMode">
 			  <div class="headerList">

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Thêm thành phố</title>
+	<link rel="icon" href="../image/icon.png">
+	<title>Sochi</title>
 	<link rel="stylesheet" href="../../Hotel-Website/css/home1.css">
 	<link rel="stylesheet" href="../../Hotel-Website/css/QuanlyHotel.css">
 </head>
@@ -14,7 +15,7 @@
 <body>
 <div class="navbar" >
 		<div class="navContainer">
-		  <a href="../../Hotel-Website/Controllers/UserController.php?action=home"><span class="logo" style="color: black;">Sochi</span></a>
+		  <a href="../../Hotel-Website/Controllers/UserController.php?action=home"><span class="logo"><img src="../image/home/logo.png" alt=""></span></a>
 		  <?php
           if($_SESSION['user']['isAdmin'] == 1)
           {

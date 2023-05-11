@@ -2,67 +2,71 @@
     position: relative;
     font-family: Arial, sans-serif;
 
-  }
-  .user-menu{
-    position: relative;
-    z-index: 9999;
-  }
-  .user-menu .menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: -50px; /* điều chỉnh vị trí sang phải 10px */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    list-style: none;
-    margin: 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    border-radius: 10px;
-    padding-left: 20px;
+}
+.user-menu{
+  position: relative;
+  z-index: 9999;
+}
+.user-menu .menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -150px; /* điều chỉnh vị trí sang phải 10px */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  list-style: none;
+  margin: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  border-radius: 10px;
+  padding-left: 20px;
 
-  }
-  
-  .user-menu .menu li {
-    margin-top: 20px;
-    margin-left: -6px;
-  }
-  
-  .user-menu:hover .menu {
-    display: block;
-  }
-  
-  .username {
-    text-decoration: none;
-    color: #333;
-    padding: 10px;
-    border: 1px solid #ccc;
-    display: inline-block;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
-  }
-  
-  .username:hover {
-    background-color: #e5e5e5;
-    cursor:pointer;
-  }
-  
-  .menu a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-    transition: background-color 0.2s ease;
-    padding: 5px 3px;
-    border-radius: 5px;
-  }
-  
-  .menu a:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: #000;
-  }
-  .avatar{
-    height: 20px;
-    border-radius: 50%;
+}
 
-  }
+.user-menu .menu li {
+  margin-top: 20px;
+  margin-left: -6px;
+}
+
+.user-menu:hover .menu {
+  display: block;
+}
+
+.username {
+  height: 40px;
+  width: 40px;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.username:hover {
+  background-color: #e5e5e5;
+  cursor:pointer;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  transition: background-color 0.2s ease;
+  padding: 5px 3px;
+  border-radius: 5px;
+}
+
+.menu a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #000;
+}
+.avatar{
+  margin: -11px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+}

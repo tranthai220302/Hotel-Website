@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../../Hotel-Website/css/search.css">
+    <link rel="icon" href="../../image/icon.png">
+    <title>Sochi</title>
+    <link rel="stylesheet" href="../../../Hotel-Website/css/Search.css">
     <link rel="stylesheet" href="../css/home1.css">
 </head>
 <style>
@@ -16,7 +17,7 @@
 <body>
   <div class="navbar">
     <div class="navContainer">
-      <a href="../../../Hotel-Website/Views/home.php"><span class="logo" style="color: black;">Sochi</span></a>
+      <a href="../../../Hotel-Website/Views/home.php" class="logo"> <img src="../../image/home/logo.png" alt=""></a>
 		  <?php
       if(!isset($_SESSION['user']['isAdmin']))
       {
@@ -49,7 +50,7 @@
             <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
             </div>
             <ul class='menu'>
-                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thong tin ngươi dùng</a></li>
+                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin ngươi dùng</a></li>
                 <li><a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li>
                 <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
             </ul>
@@ -85,7 +86,7 @@
               <p class="headerDesc">
                 
               </p>         
-            </div>
+          </div>
       </div>
       
       <div class="listContainer">

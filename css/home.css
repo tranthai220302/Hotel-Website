@@ -21,7 +21,9 @@ a {
 }
 
 .container {
-  max-width: 80%;
+  max-width: 100%;
+  padding: 0 15px;
+  margin: auto;
 }
 
 .head_container {
@@ -32,7 +34,14 @@ a {
 /*--------------header--------*/
 
 header {
-  height: 8vh;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #263760;
+  border-bottom: 0.5px solid #f8f8f9;
+  z-index: 5;
 }
 
 .logo img {
@@ -43,7 +52,7 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
+  padding: 10px 0;
 }
 
 .hambuger {
@@ -130,6 +139,9 @@ header ul li a:hover {
 
 /*--------------header--------*/
 /*--------------home--------*/
+.home {
+  padding-top: 55px;
+}
 .home .image img {
   position: absolute;
   top: 0;
@@ -155,7 +167,7 @@ header ul li a:hover {
   line-height: 25px;
   font-family: sans-serif;
   font-size: 17px;
-  margin: 50px 0 0 50px;
+  margin: 0px
 }
 
 button {
@@ -168,8 +180,15 @@ button {
   margin-top: 20px;
 }
 
+button:hover {
+  cursor: pointer;
+  background-color: #263760;
+  color: #fcfc00;
+  border: 2px solid #929246;
+}
+
 .home button {
-  margin-left: 50px;
+  margin-left: 0px;
 }
 
 .home .image_item {
@@ -219,8 +238,9 @@ button {
 }
 
 .book {
-
-  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  width: 80%;
   height: 50px;
   color: white;
 
@@ -240,7 +260,7 @@ button {
 }
 
 input {
-  width: 100%;
+  width: 115%;
   padding: 15px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   outline: none;
@@ -260,7 +280,7 @@ input {
 
 .book .search input {
   width: 15%;
-padding: 15px;
+  padding: 15px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   outline: none;
   background: #263760;
@@ -269,14 +289,20 @@ padding: 15px;
   height: 100%;
 }
 
+.btn:hover {
+  color: #fcfc00;
+  border: 2px solid #929246;
+  cursor: pointer;
+}
+
 /*--------------book--------*/
 /*--------------about--------*/
 .top {
-  margin-top: 10%;
+  padding-top: 10% !important;
 }
 
 .mtop {
-  margin-top: 5%;
+  margin-top: 5% !important;
 }
 
 .left, .right {
@@ -285,6 +311,8 @@ padding: 15px;
 
 .about {
   margin-bottom: 50px;
+  margin: 0 auto;
+  width: 80%;
 }
 
 .about .img {
@@ -465,7 +493,13 @@ padding: 15px;
 }
 
 /*--------------map--------*/
+
 /*--------------footer--------*/
+footer {
+  background-color: #263760;
+  color: #fff;
+}
+
 footer h3 {
   margin-bottom: 20px;
 }
@@ -578,7 +612,6 @@ footer li:hover {
 /*city */
 .featured{
   width: 100%;
-  max-width: 1024px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -686,6 +719,7 @@ footer li:hover {
 }
 /*footer*/
 .footer{
+  
   width: 100%;
   width: 1024px;
   font-size: 12px;
@@ -695,17 +729,17 @@ footer li:hover {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
+
 }
 
 .fList{
   list-style: none;
-  padding: 0;
+  padding: 20px 0px 0 20px;
 }
 
 .fListItem{
   margin-bottom: 10px;
-  color: #003580;
+  color: #fff;
   cursor: pointer;
 }
 .book .input {
@@ -736,7 +770,6 @@ padding: 15px;
   height: 100%;
 }
 .numStar{
-  width: 100%;
   padding: 15px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   outline: none;
