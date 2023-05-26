@@ -3,10 +3,10 @@ body {
 	margin: 0;
 	padding: 0;
 	background-image: url('../../../image/home/31.jpg');
-	background-position:0px -100px;
+	background-position:0px 100px;
 }
 
-header {
+header1 {
 	background-color: #333;
 	color: #fff;
 	padding: 20px;
@@ -137,7 +137,6 @@ footer {
 }
 .add{
 	margin: 20px 0 0 20px;
-	background-color: white;
 	width: 13%;
 	padding: 10px;
 	text-align: center;
@@ -149,7 +148,7 @@ footer {
 .add_link{
 	text-decoration: none;
 }
-.back{
+.back1{
 	margin: 20px 0 0 20px;
 	width: 10%;
 	padding: 10px;
@@ -165,7 +164,7 @@ footer {
 }
 
 
-.header {
+.header1 {
     background-color: #003580;
     color: white;
     display: flex;
@@ -174,39 +173,39 @@ footer {
 	
   }
   
-  .headerContainer {
+  .header1Container {
     width: 100%;
     max-width: 1024px;
     margin: 20px 0px 100px 0px;
   }
   
-  .headerContainer.listMode {
+  .header1Container.listMode {
     margin: 20px 0px 0px 0px;
   }
   
-  .headerList {
+  .header1List {
     display: flex;
     gap: 40px;
     margin-bottom: 50px;
   }
   
-  .headerListItem {
+  .header1ListItem {
     display: flex;
     align-items: center;
     gap: 10px;
   }
   
-  .headerListItem.active {
+  .header1ListItem.active {
     border: 1px solid white;
     padding: 10px;
     border-radius: 20px;
   }
   
-  .headerDesc {
+  .header1Desc {
     margin: 20px 0px;
   }
   
-  .headerBtn {
+  .header1Btn {
     background-color: #0071c2;
     color: white;
     font-weight: 500;
@@ -215,7 +214,7 @@ footer {
     cursor: pointer;
   }
   
-  .headerSearch {
+  .header1Search {
     height: 30px;
     background-color: white;
     border: 3px solid #febb02;
@@ -230,35 +229,35 @@ footer {
     max-width: 1024px;
   }
   
-  .headerIcon {
+  .header1Icon {
     color: lightgray;
   }
   
-  .headerSearchItem {
+  .header1SearchItem {
     display: flex;
     align-items: center;
     gap: 10px;
   }
   
-  .headerSearchInput {
+  .header1SearchInput {
     border: none;
     outline: none;
   }
   
-  .headerSearchText {
+  .header1SearchText {
     color: lightgray;
     cursor: pointer;
   }
 
   /*nava*/
-  .navbar{
+  .navbar1{
     height: 50px;
     background-color: #003580;
     display: flex;
     justify-content: center;
   }
   
-  .navContainer{
+  .navContainer1{
     width: 100%;
     max-width: 1024px;
     color: white;
@@ -278,7 +277,7 @@ footer {
     cursor: pointer;
     color: #003580;
   }
-  .btn{
+  .btn1{
 	display: flex;
 	justify-content: space-between;
   }

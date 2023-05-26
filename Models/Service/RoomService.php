@@ -4,10 +4,14 @@
     class RoomService
     {
         public function __construct() {}
+        public function n_review(){
+            
+        }
         public function getRoombyUser($id)
         {
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             $sql = "SELECT  *FROM room WHERE idUser = $id";
             $result = mysqli_query($con, $sql);
             $i = 0;
@@ -23,8 +27,9 @@
             }
         }
         public function bookRoomService($idRoom, $idUser,$startDate, $endDate, $Adults, $Chilrens){
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             $sql = "UPDATE room
             SET adults = '$Adults', children = '$Chilrens', startDay = STR_TO_DATE('$startDate', '%Y-%m-%d'), enDay = STR_TO_DATE('$endDate', '%Y-%m-%d'), idUser = '$idUser', isbook = 1
             WHERE idRoom = $idRoom";
@@ -50,8 +55,9 @@
         }
         public function getRoombyRequest($idHotel, $search_option, $search_Val)
         {
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             if($search_option == 'priceMin')
             {
                 $sql = "SELECT * FROM room  Where idHotel=$idHotel AND price < $search_Val AND isbook=0";
@@ -81,8 +87,9 @@
             }
         }
         public function getListRoom($idhotel, $page) {
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             $limit = 4;
             $start = ($page - 1) * $limit;
             $sql = "SELECT * FROM room  Where idHotel=$idhotel";
@@ -110,8 +117,9 @@
         }
         public function getRoomNotBook($id)
         {
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             $sql = "SELECT *FROM room WHERE idHotel = $id AND isbook = 0";
             $result = mysqli_query($con, $sql);
             if(mysqli_num_rows($result) > 0)
@@ -123,7 +131,7 @@
                 $sql = "SELECT *FROM hotels WHERE idHotel = $id";
                 $result = mysqli_query($con, $sql);
                 while($row = mysqli_fetch_array($result)) {
-                    $hotels = new Hotel($row['idHotel'], $row['nameHotel'], $row['numRoom'], $row['Description'], $row['numStart'], $row['idCity'], $row['imgHotel'], $row['address']);
+                    $hotels = new Hotel($row['idHotel'], $row['nameHotel'], $row['numRoom'], $row['Description'], $row['numStart'], $row['idCity'], $row['imgHotel'], $row['address'], $row['idUser'], $row['date']);
                 }
                 $nameHotel = $hotels->getnameHotel();
                     $arrr = array();
@@ -134,8 +142,9 @@
         }
         public function deleteRoom($idRoom, $idhotel)
         {
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             $sql = "DELETE FROM room WHERE idRoom = $idRoom";
             $result = mysqli_query($con, $sql);
             if($result)
@@ -153,8 +162,9 @@
          }
          public function addRoom($nameRoom, $Price, $description, $imgRoom, $idHotel)
          {
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             $sql = "INSERT INTO room (nameRoom, Description, Price, imgRoom, idHotel)
             VALUES ('$nameRoom', '$description', '$Price', '$imgRoom', '$idHotel')";
             $result = mysqli_query($con, $sql);
@@ -173,8 +183,9 @@
          }
          public function getRooms($idRoom)
          {
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             $sql = "SELECT *FROM room WHERE idRoom = $idRoom";
             $result = mysqli_query($con, $sql);
             if($result)
@@ -187,8 +198,9 @@
          }
          public function editRoom($idRoom, $nameRoom, $description, $Price, $imgRoom, $adult, $children)
          {
-            include_once('../Models/connect_db.php');
-            include_once('../Models/ExitRoom.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            include_once('../Models/Entity/ExitRoom.php');
             $sql = "UPDATE room
             SET nameRoom = '$nameRoom', Description = '$description', Price = '$Price', imgRoom = '$imgRoom', adults = '$adult', children = '$children'
             WHERE idRoom = $idRoom";

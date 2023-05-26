@@ -205,13 +205,13 @@
 
   <div class="navbar">
 		<div class="navContainer">
-    <a href="../../../Hotel-Website/Controllers/UserController.php?action=home"><span class="logo" style="color: black;">Sochi</span></a>
 
       <?php
           if($_SESSION['user']['isAdmin'] == 1)
           {
            
             echo "
+            <a href='../../../Hotel-Website/Controllers/UserController.php?action=home_admin'><span class='logo' style='color: black;'>Sochi</span></a>
             <div class='user-menu'>
             <div class='username'>
             <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
@@ -220,7 +220,6 @@
                 <li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity'>Quan ly khach san</a></li>
                 <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser'>Danh sách người dùng</a></li>
                 <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
-                <li><a href='../Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li>
                 <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
             </ul>
           </div>";

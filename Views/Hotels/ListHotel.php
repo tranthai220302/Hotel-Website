@@ -3,8 +3,11 @@
 <head>
 	<title>Danh sách khách sạn ở Việt Nam</title>
 	<link rel="stylesheet" type="text/css" href="../../../Hotel-Website/Views/Hotels/css/ListHotel.css">
+	<link rel="stylesheet" type="text/css" href="../../../Hotel-Website/Views/Hotels/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../../../Hotel-Website/css/home1.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 <style>
 .user-menu{
@@ -13,14 +16,14 @@
 }
 </style>
 <body>
-<div class="navbar">
-		<div class="navContainer">
-		<a href="../../../Hotel-Website/Controllers/UserController.php?action=home"><span class="logo" style="color: black;">Sochi</span></a>
+<div class="navbar1">
+		<div class="navContainer1">
 		  <?php
           if($_SESSION['user']['isAdmin'] == 1)
           {
            
             echo "
+			<a href='../../../Hotel-Website/Controllers/UserController.php?action=home_admin'><span class='logo' style='color: black;'>Sochi</span></a>
             <div class='user-menu'>
             <div class='username'>
             <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
@@ -29,12 +32,12 @@
                 <li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity'>Quan ly khach san</a></li>
                 <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser'>Danh sách người dùng</a></li>
                 <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
-				<li><a href='../Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li> 
                 <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
             </ul>
           </div>";
           }else if($_SESSION['user']['isAdmin'] == 0){
             echo "
+			<a href='../../../Hotel-Website/Controllers/UserController.php?action=home'><span class='logo' style='color: black;'>Sochi</span></a>
             <div class='user-menu'>
             <div class='username'>
             <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
@@ -49,53 +52,189 @@
       ?>
 		</div>
 	  </div>
-		<div class="header">
-			<div class= "headerContainer listMode">
-			  <div class="headerList">
-				<div class="headerListItem active">
+		<div class="header1">
+			<div class= "header1Container listMode">
+			  <div class="header1List">
+				<div class="header1ListItem active">
 				  <span>Stays</span>
 				</div>
-				<div class="headerListItem">
+				<div class="header1ListItem">
 				  <span>Flights</span>
 				</div>
-				<div class="headerListItem">
+				<div class="header1ListItem">
 				  <span>Car rentals</span>
 				</div>
-				<div class="headerListItem">
+				<div class="header1ListItem">
 				  <span>Attractions</span>
 				</div>
-				<div class="headerListItem">
+				<div class="header1ListItem">
 				  <span>Airport taxis</span>
 				</div>
 			  </div>
-				  <p class="headerDesc">
+				  <p class="header1Desc">
 					
 				  </p>         
 				</div>
+		</div>	
+		<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasExampleLabel">Add Hotel</h5>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<form action='../../../Hotel-Website/Controllers/HotelController.php?action=addHotel' method='post' enctype='multipart/form-data'>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' >Name Hotel</label>
+				<input type='text' class='form-control' placeholder='Name Hotel' id='inputDefault' name = 'nameHotel' required>
+			</div>
+			<div class='form-group'>
+				<label for='exampleSelect1' style='margin-top: 30px;'>Số sao</label>
+				<select class='form-select' id='exampleSelect1' name = 'numStar' required>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+			</div>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Địa Điểm</label>
+				<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'address' required>
+			</div>
+			<div class='form-group'>
+			<label for='exampleTextarea' style='margin-top: 30px;'>Miêu tả</label>
+			<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description' required></textarea>
+			</div>
+			<div class='form-group'>
+				<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Anhr</label>
+				<input class='form-control' type='file' id='formFile' name='imgHotel' accept='image/*' required>
+			</div>
+			<div class='dropdown mt-3' style='margin-top: 30px;'>
+				
+			<button type='submit' class='btn btn-success'>Success</button>
+			</form>
+			</div>
+		</div>
 		</div>
 		<div class="img_body">
-		<div class = 'btn'>
+		<div class = 'btn1'>
 		<div class = 'add' style="color:black;">
-		<a class = 'add_link' href="../../../Hotel-Website/Views/Hotels/AddHotel.php">
+		<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
 		<i class="fa-solid fa-plus">
 		</i>Thêm khách sạn
-		</a>
+		</button>
 		</div>
-		<div class = 'back'>
+		<div class = 'back1'>
 		<a style="text-decoration: none;" href="../../../Hotel-Website/Controllers/CityController.php?action=listCity">
 		<i class="fa-solid fa-arrow-left"></i>
 		Back
 			</a>
 		</div>
 		</div>
+
 	<main>
 	<?php
+	$page = isset($_GET['page']) ? $_GET['page'] : 1;
 	if(is_string($arr))
 	{
 		echo "<div style = 'color: red;''>$arr</div>";
 	}else{
+		$j = -1;
+		$i=0;
 	foreach($arr['hotels'] as $hotel)
 		{
+			$i++;
+			$j--;
+			if($hotel->getIdUser()){
+				if($users[$hotel->getidHotel()]->getImg()){
+					$img = $users[$hotel->getidHotel()]->getImg();
+				}else{
+					$img = 'avata.jpg';
+				}
+				$a = "
+				<a style = 'margin-left: 45%;' class='btn btn-primary' data-bs-toggle='offcanvas' href='#offcanvasExample".$i."' role='button' aria-controls='offcanvasExample".$i."'>
+				Detail User
+				</a>
+			<div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample".$i."' aria-labelledby='offcanvasExampleLabel'>
+			<div class='offcanvas-header'>
+				<h5 class='offcanvas-title' id='offcanvasExampleLabel'>User Hotel</h5>
+				<button type='button' class='btn-close text-reset' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+			</div>
+			<div class='offcanvas-body'>
+				<form action='../../../Hotel-Website/Controllers/HotelController.php?action=edit&id=".$hotel->getidHotel()."' method='post' enctype='multipart/form-data'>
+				<div class='form-group'>
+				<img src='../../../Hotel-Website/image/user/".$img." ' alt='' style='border-radius: 50%; width: 360px; height: 300px;'>
+				</div>
+				<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' >Name</label>
+				<input type='text' class='form-control' placeholder='Name Hotel' id='inputDefault' name = 'nameHotel'  value = '".$users[$hotel->getidHotel()]->getFirstName()." ".$users[$hotel->getidHotel()]->getLastName()."'>
+				</div>
+				<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Address</label>
+					<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'address'  value = '".$users[$hotel->getidHotel()]->getAddress()."'>
+				</div>
+				<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Phone</label>
+				<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'address'  value = '".$users[$hotel->getidHotel()]->getPhone()."'>
+				</div>
+				<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Email</label>
+				<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'address'  value = '".$users[$hotel->getidHotel()]->getEmail()."'>
+				</div>
+				</form>
+			</div>
+		</div>
+				";
+			}else{
+				$a = "
+				<a style = 'margin-left: 45%;' class='btn btn-primary' data-bs-toggle='offcanvas' href='#offcanvasExample".$j."' role='button' aria-controls='offcanvasExample".$j."'>
+				Create User
+				</a>
+				<div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample".$j."' aria-labelledby='offcanvasExampleLabel'>
+				<div class='offcanvas-header'>
+					<h5 class='offcanvas-title' id='offcanvasExampleLabel'>User Hotel</h5>
+					<button type='button' class='btn-close text-reset' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+				</div>
+				<div class='offcanvas-body'>
+					<form action='../../../Hotel-Website/Controllers/UserController.php?action=createUserByHotel&id=".$hotel->getidHotel()."&page=".$page."' method='post' enctype='multipart/form-data'>
+					<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' >Username</label>
+					<input type='text' class='form-control' placeholder='Username' id='inputDefault' name = 'username'  >
+					</div>
+					<div class='form-group'>
+						<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Password</label>
+						<input type='text' class='form-control' placeholder='Password' id='inputDefault' name = 'password'  >
+					</div>
+					<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>FirstName</label>
+					<input type='text' class='form-control' placeholder='FirstName' id='inputDefault' name = 'firstName'  >
+					</div>
+					<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>LastName</label>
+					<input type='text' class='form-control' placeholder='LastName' id='inputDefault' name = 'lastName' >
+					</div>
+					<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Email</label>
+					<input type='text' class='form-control' placeholder='email' id='inputDefault' name = 'email' >
+					</div>
+					<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Address</label>
+					<input type='text' class='form-control' placeholder='address' id='inputDefault' name = 'address' >
+					</div>
+					<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Numberphone</label>
+					<input type='text' class='form-control' placeholder='Numberphone' id='inputDefault' name = 'Numberphone' >
+					</div>
+					<div class='form-group'>
+					<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Anh</label>
+					<input class='form-control' type='file' id='formFile' name='Avatar' accept='image/*' >
+					</div>
+					<button type='submit' class='btn btn-success' style='margin-top: 30px;'>Success</button>
+					</form>
+				</div>
+			</div>
+				";
+			}
 			echo "
 			<div class='hotel'>
 			<div class = 'hotel_item'>
@@ -112,9 +251,53 @@
 				</div>
 			</div>
 				<div class = 'ed'>
-				<a class = 'link' href='../../../Hotel-Website/Controllers/HotelController.php?action=delete&id=".$hotel->getidHotel()."'>Delete</a>
-				<a class = 'link' href='../../../Hotel-Website/Controllers/HotelController.php?action=getHotel&id=".$hotel->getidHotel()."'>Edit</a>
-				<a class = 'link' href='../../../Hotel-Website/Controllers/RoomController.php?action=getlist&id=".$hotel->getidHotel()."'>List Room</a>
+				<a class='btn btn-primary' href='../../../Hotel-Website/Controllers/HotelController.php?action=delete&id=".$hotel->getidHotel()."' onclick='return confirmDelete();' style = 'margin-right: 15px;'>Delete</a>
+				<button class='btn btn-primary' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample".$hotel->getidHotel()."' aria-controls='offcanvasExample".$hotel->getidHotel()."'>
+				Edit
+			</button>
+			<div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample".$hotel->getidHotel()."' aria-labelledby='offcanvasExampleLabel'>
+			<div class='offcanvas-header'>
+				<h5 class='offcanvas-title' id='offcanvasExampleLabel'>Edit Hotel</h5>
+				<button type='button' class='btn-close text-reset' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+			</div>
+			<div class='offcanvas-body'>
+				<form action='../../../Hotel-Website/Controllers/HotelController.php?action=edit&id=".$hotel->getidHotel()."' method='post' enctype='multipart/form-data'>
+				<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' >Name Hotel</label>
+					<input type='text' class='form-control' placeholder='Name Hotel' id='inputDefault' name = 'nameHotel'  value = '".$hotel->getnameHotel()."'>
+				</div>
+				<div class='form-group'>
+					<label for='exampleSelect1' style='margin-top: 30px;'>Số sao</label>
+					<select class='form-select' id='exampleSelect1' name = 'numStar'  value = ".$hotel->getnumStart().">
+						<option>".$hotel->getnumStart()."</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<div class='form-group'>
+					<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Địa Điểm</label>
+					<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'address'  value = '".$hotel->getAddress()."'>
+				</div>
+				<div class='form-group'>
+				<label for='exampleTextarea' style='margin-top: 30px;'>Miêu tả</label>
+				<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description'  value = '".$hotel->getdescription()."'>".$hotel->getdescription()."</textarea>
+				</div>
+				<div class='form-group'>
+					<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Anh</label>
+					<input class='form-control' type='file' id='formFile' name='imgHotel' accept='image/*' >
+				</div>
+					
+				<button type='submit' class='btn btn-success'>Success</button>
+				</form>
+			</div>
+			</div>
+			<div style='display: flex; justify-content: space-between;'>
+			</div>
+				<a class='btn btn-primary' href='../../../Hotel-Website/Controllers/RoomController.php?action=getlist&id=".$hotel->getidHotel()."' style = 'margin-left: 15px;'>List Room</a>
+				".$a."
 				</div>
 			</div>
 
@@ -123,6 +306,11 @@
 	}
 	?>
 	</main>
+	<script>
+		function confirmDelete() {
+			return confirm("Bạn có muốn xóa khách sạn này không?");
+		}
+	</script>
 	<?php
 	if(isset($arr['hotels']))
 	{
@@ -133,9 +321,11 @@
 		}
 		echo "</div>";
 	}
+	
 	?>
 		</div>
-		
+
+
 
 </body>
 </html>

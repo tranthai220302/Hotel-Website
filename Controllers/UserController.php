@@ -1,10 +1,16 @@
 <?php
     session_start();
     include_once('../Models/Service/UserService.php');
+    include_once('../Models/Service/RoomService.php');
+    include_once('../Models/Service/CityService.php');
     class UserController {
         private $adminService = NULL;
+        private $adminRoom = NULL;
+        private $adminCity = NULL;
         public function __construct(){
             $this->adminService = new UserService();
+            $this->adminRoom = new RoomService();
+            $this->adminCity = new CityService();
         }
 
         public function invoke() {
@@ -42,7 +48,61 @@
                     case 'updateAdmin':
                         $this->updateAdmin();
                         break;
+                    case 'userbookRoom':
+                        $this->UserbookRoom();
+                        break;
+                    case 'home1':
+                        $this->home();
+                        break;
+                    case 'home2':
+                        $this->home2();
+                        break;
+                    case 'home_admin':
+                        $this->home_admin();
+                        break;
+                    case 'createUserByHotel':
+                        $this->createUserByHotel();
+                        break;
                 }
+            }
+        }
+        public function home_admin(){
+            if($_SESSION['user']['isAdmin'] == 1){
+                $citys = $this->adminCity->getListCity();
+                include_once('../Views/QuanlyHotels.php');
+            }
+        }
+
+        public function home2(){
+            $idUser = $_SESSION['user']['id'];
+            $hotel = $this->adminService->getHotelByUser($idUser);
+            $_SESSION['id_hotel'] = $hotel->getidHotel();
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $arr = $this->adminRoom->getListRoom($hotel->getidHotel(), $page);
+            $count = count($arr);
+            $n_review = $this->adminService->n_review($_SESSION['id_hotel']);
+            if($n_review!=0){
+                $n_review = count($n_review);
+            }
+            $city = $this->adminCity->getCityBy($hotel->getidCity());
+            include_once('../Views/Employee/home/index.php');
+        }
+        public function home(){
+            $idUser = $_SESSION['user']['id'];
+            $hotel = $this->adminService->getHotelByUser($idUser);
+            $_SESSION['id_hotel'] = $hotel->getidHotel();
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $arr = $this->adminRoom->getListRoom($hotel->getidHotel(), $page);
+            include_once('../Views/Employee/home.php');
+        }
+        public function UserbookRoom()
+        {
+            $id_Hotel = $_SESSION['id_hotel'];
+            $users = $this->adminService->UserbookRoom($id_Hotel);
+            if(!$users){
+                $users = "Không có khách hàng đặt phòng!";
+            }else{
+                include_once('../Views/Employee/ListCustomer.php');
             }
         }
         public function updateAdmin()
@@ -87,14 +147,36 @@
                     "isAdmin" =>$arr['User_login']->getIsAdmin(),
                     'firstName' =>$arr['User_login']->getFirstName(),
                     'lastName'=>$arr['User_login']->getLastName(),
+                    'isHotel'=>$arr['User_login']->getIsHotel(),
                 );
-                if(!isset($_SESSION['is_loading']))
+                if($_SESSION['user']['isHotel'] == 1)
                 {
-                    include_once('../Views/home.php');
-                }else if($_SESSION['is_loading'] == 1){
-                    $idRoom= $_SESSION['room']['id'];
-                    $link = "../../Hotel-Website/Controllers/RoomController.php?action=getBookRoom&id=$idRoom";
-                    header("refresh:0; url=$link");
+                    $idUser = $_SESSION['user']['id'];
+                    $hotel = $this->adminService->getHotelByUser($idUser);
+                    $_SESSION['id_hotel'] = $hotel->getidHotel();
+                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                    $arr = $this->adminRoom->getListRoom($hotel->getidHotel(), $page);
+                    $count = count($arr);
+                    $n_review = $this->adminService->n_review($_SESSION['id_hotel']);
+                    if($n_review!=0){
+                        $n_review = count($n_review);
+                    }
+                    $city = $this->adminCity->getCityBy($hotel->getidCity());
+                    include_once('../Views/Employee/home/index.php');
+                    
+                }else if($_SESSION['user']['isAdmin'] == 1){
+                    $citys = $this->adminCity->getListCity();
+                    include_once('../Views/QuanlyHotels.php');
+                }
+                else{
+                    if(!isset($_SESSION['is_loading']))
+                    {
+                        include_once('../Views/home.php');
+                    }else if($_SESSION['is_loading'] == 1){
+                        $idRoom= $_SESSION['room']['id'];
+                        $link = "../../Hotel-Website/Controllers/RoomController.php?action=getBookRoom&id=$idRoom";
+                        header("refresh:0; url=$link");
+                    }
                 }
             }
         }
@@ -194,6 +276,30 @@
                 $listUser =  $this->adminService->getlistUser($page);
                 include_once('../Views/User/ListUser.php');
             }
+        }
+        public function createUserByHotel(){
+            $id_Hotel = $_GET['id'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+            $address = $_POST['address'];
+            $numberPhone = $_POST['Numberphone'];
+            $lastName = $_POST['lastName'];
+            $firstName = $_POST['firstName'];
+            $imge = $_FILES['Avatar']['name'];
+            $User_login = $this->adminService->createUserByHotel($username, $password,  $email, $address, $numberPhone, $imge, $firstName, $lastName, $id_Hotel);
+            if($User_login){
+                $target_dir = "../image/user/"; // Thư mục lưu trữ tệp tin
+                $target_file = $target_dir . basename($_FILES["Avatar"]["name"]); // Đường dẫn của tệp tin sau khi được upload
+                move_uploaded_file($_FILES["Avatar"]["tmp_name"], $target_file);
+                $id = $_SESSION['id_city'];
+                $page = $_GET['page'];
+                $link = "../../Hotel-Website/Controllers/HotelController.php?action=listHotel&id=$id&page=$page";
+                header("refresh:0; url=$link");
+            }else{
+                
+            }
+
         }
         }
     (new UserController())->invoke();

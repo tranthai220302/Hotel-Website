@@ -11,7 +11,7 @@ $sql = 'SELECT *
         $result = mysqli_query($con, $sql);
 $i=0;
 while($row = mysqli_fetch_assoc($result)){
-    $hotels[$i++] = new Hotel($row['idHotel'], $row['nameHotel'], $row['numRoom'], $row['Description'], $row['numStart'], $row['idCity'], $row['imgHotel'], $row['address']);
+    $hotels[$i++] = new Hotel($row['idHotel'], $row['nameHotel'], $row['numRoom'], $row['Description'], $row['numStart'], $row['idCity'], $row['imgHotel'], $row['address'], $row['idUser'], $row['date']);
     $i++;
 }
 $sql = "select * from city";

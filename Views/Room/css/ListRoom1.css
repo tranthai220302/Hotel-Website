@@ -1,0 +1,174 @@
+
+
+.hotel {
+	width: calc(50%-200px);
+	margin-bottom: 20px;
+	background-color: #f7f7f7;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	padding: 20px;
+	margin-bottom: 50px;
+}
+
+.img{
+	width: 297px;
+	height: 162px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+.hotel h2 {
+	font-size: 24px;
+	margin: 0;
+	margin: auto;
+}
+
+.rating {
+	font-size: 18px;
+	color: #ffcc00;
+	margin-bottom: 10px;
+}
+
+.info {
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+.pagination {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+  	margin: auto  ;
+}
+
+.pagination a {
+	display: inline-block;
+	background-color: #333;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.pagination a:hover {
+	background-color: #666;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.content{
+
+  margin-left: 70px;
+
+}
+footer {
+	height: 50px;
+	background-color: #ccc;
+	text-align: center;
+	padding: 10px;
+}
+.content .des {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    width: 350px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Số dòng hiển thị */
+    -webkit-box-orient: vertical; /* Hướng của các box */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+    font-style: italic;
+    margin-top: 10px;
+  }
+  .ed{
+	display: flex;
+	margin-top: 10px;
+  }
+  .link{
+	text-decoration: none;
+	background-color: rgba(1,1,1,0.3);
+	padding: 6px 15px;
+	border-radius: 10px;
+	margin: 0 0 0 40px;
+	color: black;
+  }
+  .hotel_item{
+	display: flex;
+	align-items: center;
+	
+  }
+  .star{
+  display: inline-block;
+  width: 20px; /* độ rộng của ngôi sao */
+  height: 20px; /* chiều cao của ngôi sao */
+  background-image: url('path/to/star.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+}
+.add{
+	margin: 20px 0 0 20px;
+	background-color: white;
+	width: 13%;
+	padding: 10px;
+	text-align: center;
+	border-radius: 10px;
+	font-weight: 600;
+	font-style: italic;
+}
+.add_link{
+	text-decoration: none;
+}
+.back{
+	margin: 20px 0 0 20px;
+	width: 10%;
+	padding: 10px;
+	text-align: center;
+	border-radius: 10px;
+	font-weight: 600;
+	font-style: italic;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navButton{
+    margin-left: 20px;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #003580;
+  }
+  .btn{
+	display: flex;
+	justify-content: space-between	;
+  }
+  .pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+
+	}
+
+	.pagination a {
+	color: black;
+	text-decoration: none;
+	transition: background-color 0.3s;
+	background-color: rgba(0,0,0,0.3);
+
+	}
+
+	.pagination a.active, .pagination a:hover {
+		background-color:darkslategray;
+		color: black;
+	}
+	.img_body{
+        
+	}

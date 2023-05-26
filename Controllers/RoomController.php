@@ -141,18 +141,18 @@
         }
         public function getlistRoom()
         {
-            if($_SESSION['login'] && $_SESSION['user']['isAdmin'] == 1)
+            if($_SESSION['login'])
             {
                $_SESSION['id_hotel'] = $_GET['id'];
                $page = isset($_GET['page']) ? $_GET['page'] : 1;
                $arr = $this->adminService->getlistRoom($_GET['id'], $page);
-               include_once('../Views/Room/ListRoom.php');
+               include_once('../Views/Employee/home.php');
                
             }
         }
         public function addRoom()
         {
-            if($_SESSION['login'] && $_SESSION['user']['isAdmin'] == 1){
+            if($_SESSION['login']){
                 $nameRoom = $_POST['nameRoom'];
                 $Price = $_POST['Price'];
                 $description = $_POST['description'];
@@ -173,7 +173,7 @@
         }
         public function deleteRoom()
         {
-            if($_SESSION['login'] && $_SESSION['user']['isAdmin'] == 1){
+            if($_SESSION['login']){
                 $idRoom = $_GET['id'];
                 $DeleteHotel = $this->adminService->deleteRoom($idRoom, $_SESSION['id_hotel']);
                 if($DeleteHotel)
@@ -186,7 +186,7 @@
         }
         public function getRoom()
         {
-            if($_SESSION['login'] && $_SESSION['user']['isAdmin'] == 1){
+            if($_SESSION['login']){
                 $idRoom = $_GET['id'];
                 $Get_room = $this->adminService->getRooms($idRoom);
                 if(is_string($Get_room))
@@ -200,7 +200,7 @@
         }
         public function editRoom()
         {
-            if($_SESSION['login'] && $_SESSION['user']['isAdmin'] == 1){
+            if($_SESSION['login']){
                 $idRoom = $_GET['id'];
                 $nameRoom = $_POST['nameRoom'];
                 $description = $_POST['description'];

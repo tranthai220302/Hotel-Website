@@ -6,7 +6,6 @@
 
         public function getlistReview($idHotel) {
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
-            //Lựa chọn cơ sở dữ liệu
             mysqli_select_db($con,"quanlyks");
             $sql = "select * from review where idHotel = $idHotel";
             $result = mysqli_query($con, $sql);
@@ -25,7 +24,8 @@
         }
         public function comment($idUser, $idHotel, $desc, $nameUser, $imgUser)
         {
-            include_once('../Models/connect_db.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
             $currentDate = date('Y-m-d');
             $sql = "INSERT INTO review (idUser, idHotel, description, nameUser, imgUser, time) 
             VALUES ('$idUser', '$idHotel', '$desc', '$nameUser', '$imgUser', '$currentDate')";
@@ -43,7 +43,8 @@
         }
         public function deleteReview($idReview)
         {
-            include_once('../Models/connect_db.php');
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
             $sql = "DELETE FROM review WHERE idReview = $idReview";
             $result = mysqli_query($con, $sql);
             if($result)

@@ -8,8 +8,10 @@
         private $idCity;
         private $imgHotel;
         private $address;
+        private $idUser;
+        private $date;
             
-        public function __construct($idHotel, $nameHotel, $numRoom, $description, $numStart, $idCity, $imgHotel, $address)
+        public function __construct($idHotel, $nameHotel, $numRoom, $description, $numStart, $idCity, $imgHotel, $address, $idUser, $date)
         {
             $this->idHotel = $idHotel;
             $this->nameHotel = $nameHotel;
@@ -19,8 +21,17 @@
             $this->idCity = $idCity;
             $this->imgHotel = $imgHotel;
             $this->address = $address;
+            $this->idUser = $idUser;
+            $this->date = $date;
 
 
+        }
+        public function getDate(){
+            return $this->date;
+        }
+        public function getIdUser()
+        {
+            return $this->idUser;
         }
         public function getAddress()
         {

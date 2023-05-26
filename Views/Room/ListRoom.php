@@ -119,22 +119,6 @@
 		
 		
 				";
-				if($room->getIsbook() == 0){
-				echo "
-					<div class = 'ed'>
-					<a class = 'link' href='../../../Hotel-Website/Controllers/RoomController.php?action=delete&id=".$room->getidRoom()."'>Delete</a>
-					<a class = 'link' href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoom&id=".$room->getidRoom()."'>Edit</a>
-					</div>
-					</div>
-				";
-				}else{
-					echo "
-					<div class = 'ed'>
-					
-					</div>
-					</div>
-				";
-				}
 			} 
 			
 		}

@@ -1,10 +1,13 @@
 <?php
     session_start();
     include_once('../Models/Service/HotelService.php');
+    include_once('../Models/Service/UserService.php');
     class UserController {
         private $adminService = NULL;
+        private $adminUser = NULL;
         public function __construct(){
             $this->adminService = new HotelService();
+            $this->adminUser = new UserService();
         }
 
         public function invoke() {
@@ -20,9 +23,6 @@
                         break;
                     case 'delete':
                         $this->deleteHotel();
-                        break;
-                    case 'getHotel':
-                        $this->getHotel();
                         break;
                     case 'edit':
                         $this->editHotel();
@@ -83,6 +83,13 @@
                $_SESSION['id_city'] = $_GET['id'];
                $page = isset($_GET['page']) ? $_GET['page'] : 1;
                $arr = $this->adminService->getListHotel($_GET['id'], $page);
+               foreach($arr['hotels'] as $hotel){
+                if($hotel->getIdUser()){
+                    $users[$hotel->getidHotel()] = $this->adminUser->getUser($hotel->getIdUser());
+                    
+                }
+               }
+               
                include_once('../Views/Hotels/ListHotel.php');
                
             }
@@ -122,19 +129,7 @@
                 }
             }
         }
-        public function getHotel()
-        {
-            if($_SESSION['login'] && $_SESSION['user']['isAdmin'] == 1){
-                $idHotel = $_GET['id'];
-                $Get_hotel = $this->adminService->getHotel($idHotel);
-                if(is_string($Get_hotel))
-                {
-                    echo $Get_hotel;
-                }else{
-                    include_once('../Views/Hotels/EditHotel.php');
-                }
-            }
-        }
+
         public function getHotelHome()
         {
             $idHotel = $_GET['id'];

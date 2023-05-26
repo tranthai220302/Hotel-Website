@@ -11,8 +11,9 @@
         private $firstName;
         private $lastName;
         private $numRoom;
+        private $isHotel;
             
-        public function __construct($id, $username, $password, $email, $isAdmin, $address, $phoneNumber, $img, $firstName, $lastName,$numRoom)
+        public function __construct($id, $username, $password, $email, $isAdmin, $address, $phoneNumber, $img, $firstName, $lastName,$numRoom,  $isHotel)
         {
             $this->id = $id;
             $this->username = $username;
@@ -25,6 +26,10 @@
             $this->firstName = $firstName;
             $this->lastName = $lastName;
             $this->numRoom = $numRoom;
+            $this->isHotel = $isHotel;
+        }
+        public function getIsHotel(){
+            return $this->isHotel;
         }
         public function getnumRoom()
         {
