@@ -27,14 +27,12 @@
 <div class="img_body">
 <div class="navbar1">
 		<div class="navContainer1">
-		<a href="../../../Hotel-Website/Controllers/UserController.php?action=home2"><span class="logo" style="color: black;">Sochi</span></a>
-
 		  <?php
           if($_SESSION['user']['isHotel'] == 1)
           {
            
             echo "
-
+			<a href='../../../Hotel-Website/Controllers/UserController.php?action=home2'><span class='logo' style='color: black;'>Sochi</span></a>
             <div class='user-menu'>
             <div class='username'>
             <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
@@ -46,7 +44,21 @@
                 <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
             </ul>
           </div>";
-          }
+          }else if($_SESSION['user']['isAdmin'] == 1){
+			echo "
+			<a href='../../../Hotel-Website/Controllers/UserController.php?action=home_admin'><span class='logo' style='color: black;'>Sochi</span></a>
+            <div class='user-menu'>
+            <div class='username'>
+            <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+            </div>
+            <ul class='menu'>
+                <li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity'>Quan ly khach san</a></li>
+                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser'>Danh sách người dùng</a></li>
+                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
+                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+            </ul>
+          </div>";
+		  }
       ?>
 		</div>
 	  </div>
