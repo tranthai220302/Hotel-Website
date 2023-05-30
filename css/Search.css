@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .header {
     background-color: #263760;
     color: white;
@@ -175,9 +178,7 @@
 		background-color:darkslategray;
 		color: black;
 	}
-	.img_body{
-        
-	}
+	
   .listSearch {
     flex: 1;
     background-color: #febb02;
@@ -441,6 +442,28 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+}
+
+/*footer*/
+footer {
+  background-color: #263760;
+  color: #fff;
+}
+.footer{
+  height: 80px;
+  text-align: center;
+  margin-top: 50px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.social {
+  padding-top: 21px;
+}
+
+.footer .social i {
+  font-size: x-large;
+  margin: 0 5px;
 }
     
   

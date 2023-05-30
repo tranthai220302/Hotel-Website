@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../../image/icon.png">
+    <link rel="icon" href="../../image/icon.png" alt="Icon">
     <title>Sochi</title>
     <link rel="stylesheet" href="../../../Hotel-Website/css/Search.css">
     <link rel="stylesheet" href="../css/home1.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
   .search{
@@ -17,7 +25,7 @@
 <body>
   <div class="navbar">
     <div class="navContainer">
-      <a href="../../../Hotel-Website/Views/home.php" class="logo"> <img src="../../image/home/logo.png" alt=""></a>
+      <a href="../../../Hotel-Website/Views/home.php" class="logo"> <img src="../../image/home/logo.png" alt="logo"></a>
 		  <?php
       if(!isset($_SESSION['user']['isAdmin']))
       {
@@ -36,7 +44,7 @@
             <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
             </div>
             <ul class='menu'>
-                <li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity'>Quan ly khach san</a></li>
+                <li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity'>Quản lý khách sạn</a></li>
                 <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser'>Danh sách người dùng</a></li>
                 <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
                 <li><a href='../Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li> 
@@ -50,7 +58,7 @@
             <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
             </div>
             <ul class='menu'>
-                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin ngươi dùng</a></li>
+                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
                 <li><a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li>
                 <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
             </ul>
@@ -60,7 +68,7 @@
       ?>
     </div>
   </div>
-    <div class="header">
+    <!-- <div class="header">
         <div class= "headerContainer listMode">
           <div class="headerList">
             <div class="headerListItem active">
@@ -87,7 +95,7 @@
                 
               </p>         
           </div>
-      </div>
+      </div> -->
       
       <div class="listContainer">
         <div class="listWrapper">
@@ -179,5 +187,17 @@
               echo "</div>";
             }
             ?>
+  <!-- footer -->
+  <footer>
+    <div class="footer">
+      <div class="social">
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-square-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-square-twitter"></i>
+      </div>
+      <p>Copyright <i class="fa-regular fa-copyright"></i> by Sochi</p>
+    </div>
+  </footer>
 </body>
 </html>

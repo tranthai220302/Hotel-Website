@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
     referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
@@ -94,7 +93,7 @@
     <div class="head_container">
       <div class="box">
         <div class="text">
-          <h1>Hello.Salut.Hola</h1>
+          <h1>Sochi xin chào</h1>
           <p>Mỗi lần đi du lịch ở Sapa tôi và gia đình đều ở khách sạn này. Khách sạn tọa lạc tại đỉnh núi. Khách sạn rất rộng. Màu chủ đạo là màu trắng. Vì là khách sạn tại vùng núi nên không gian ở đây được thiết kế rất hòa hợp với thiên nhiên. Sân của khách sạn có nhiều loại hoa khiến khách du lịch cảm thấy rất thu hút. Khi ở tại khách sạn, Khách sạn có phần sảnh khá rộng. </p>
           <button style="margin-bottom: 20px;">MORE INFO</button>
         </div>
@@ -299,53 +298,23 @@
   </script>
 <!-- map -->
   <section class="map top" id="map">
+    <div class="heading">
+      <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+      <h2>Map</h2>
+    </div>
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14131.036667732067!2d85.32395955!3d27.69383745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1637755481449!5m2!1sen!2snp" width="600" height="450" style="border:0;"
       allowfullscreen="" loading="lazy"></iframe>
   </section>
 <!-- footer -->
   <footer>
     <div class="footer">
-      <div class="fLists">
-        <ul class="fList">
-          <li class="fListItem">Countries</li>
-          <li class="fListItem">Regions</li>
-          <li class="fListItem">Cities</li>
-          <li class="fListItem">Districts</li>
-          <li class="fListItem">Airports</li>
-          <li class="fListItem">Hotels</li>
-        </ul>
-        <ul class="fList">
-          <li class="fListItem">Homes </li>
-          <li class="fListItem">Apartments </li>
-          <li class="fListItem">Resorts </li>
-          <li class="fListItem">Villas</li>
-          <li class="fListItem">Hostels</li>
-          <li class="fListItem">Guest houses</li>
-        </ul>
-        <ul class="fList">
-          <li class="fListItem">Unique places to stay </li>
-          <li class="fListItem">Reviews</li>
-          <li class="fListItem">Unpacked: Travel articles </li>
-          <li class="fListItem">Travel communities </li>
-          <li class="fListItem">Seasonal and holiday deals </li>
-        </ul>
-        <ul class="fList">
-          <li class="fListItem">Car rental </li>
-          <li class="fListItem">Flight Finder</li>
-          <li class="fListItem">Restaurant reservations </li>
-          <li class="fListItem">Travel Agents </li>
-        </ul>
-        <ul class="fList">
-          <li class="fListItem">Curtomer Service</li>
-          <li class="fListItem">Partner Help</li>
-          <li class="fListItem">Careers</li>
-          <li class="fListItem">Sustainability</li>
-          <li class="fListItem">Press center</li>
-          <li class="fListItem">Safety Resource Center</li>
-          <li class="fListItem">Investor relations</li>
-          <li class="fListItem">Terms & conditions</li>
-        </ul>
+      <div class="social">
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-square-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-square-twitter"></i>
       </div>
+      <p>Copyright <i class="fa-regular fa-copyright"></i> by Sochi</p>
     </div>
   </footer>
 </body>
