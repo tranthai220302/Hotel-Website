@@ -261,7 +261,7 @@ button:hover {
 }
 
 input {
-  width: 100%;
+  width: 115%;
   padding: 15px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   outline: none;
@@ -281,7 +281,7 @@ input {
 
 .book .search input {
   width: 15%;
-padding: 15px;
+  padding: 15px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   outline: none;
   background: #263760;
@@ -494,6 +494,7 @@ padding: 15px;
 }
 
 /*--------------map--------*/
+
 /*--------------footer--------*/
 footer {
   background-color: #263760;
@@ -598,7 +599,6 @@ footer {
 /*city */
 .featured{
   width: 100%;
-  max-width: 1024px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -713,11 +713,8 @@ footer {
   font-size: 12px;
 }
 
-.fLists{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
+.social {
+  padding-top: 21px;
 }
 
 .social {
@@ -728,6 +725,7 @@ footer {
   font-size: x-large;
   margin: 0 5px;
 }
+
 
 .book .input {
   display: flex;
