@@ -320,6 +320,7 @@ input[type="submit"]:hover {
           echo "
           <tr>
           <td style='width: 40%;'> 
+          <img src='../../../Hotel-Website/image/room/".$room->getImg()."' alt='>
             <h2>".$room->getnameRoom()."</h2>
             <p class = 'des'>M".$room->getdescription()."</p>
           </td>
