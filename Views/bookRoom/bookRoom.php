@@ -34,7 +34,7 @@ $price = intval($interval->days)*($Get_room->getPrice());
             <li>Wi-Fi miễn phí</li>
           </ul>
           <p class="price">Giá: $<?php echo $Get_room->getPrice(); ?>/ngày</p>
-          <form action="../Controllers/RoomController.php?action=bookRoom&id=<?php echo $Get_room->getidRoom(); ?>" method="post">
+          <form action="../Controllers/BookingController.php?action=bookRoom&id=<?php echo $Get_room->getidRoom(); ?>" method="post">
             <label for="check-in">Ngày nhận phòng:</label>
             <input type="date" id="check-in" name="startDate" readonly value="<?php echo $start ?>">
             <br>

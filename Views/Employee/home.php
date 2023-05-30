@@ -104,6 +104,14 @@
 				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'Price' required>
 			</div>
 			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Adults</label>
+				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'adults' required>
+			</div>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Childrens</label>
+				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'childrens' required>
+			</div>
+			<div class='form-group'>
 			<label for='exampleTextarea' style='margin-top: 30px;'>Description</label>
 			<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description' required></textarea>
 			</div>

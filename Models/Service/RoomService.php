@@ -1,6 +1,7 @@
 <?php
     include_once('../Models/Entity/Room.php');
     include_once('../Models/Entity/Hotel.php');
+    include_once('../Models/Entity/Booking.php');
     class RoomService
     {
         public function __construct() {}
@@ -12,78 +13,94 @@
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
             include_once('../Models/Entity/ExitRoom.php');
-            $sql = "SELECT  *FROM room WHERE idUser = $id";
+            $sql = "SELECT room.*
+                    FROM booking
+                    JOIN room ON booking.idRoom = room.idRoom
+                    WHERE booking.idUser = $id";
             $result = mysqli_query($con, $sql);
             $i = 0;
+            $j=0;
             while($row = mysqli_fetch_array($result)) {
-                $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
-                $i++;
+                $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
+                $idRoom = $row['idRoom'];
+                $sql_booking = "SELECT *FROM booking WHERE idUser = $id AND idRoom = $idRoom";
+                $result_booking = mysqli_query($con, $sql_booking);
+                while($row_book = mysqli_fetch_array($result_booking)){
+                    $booking[$j++] = new Booking($row_book['id'], $row_book['Date_start'], $row_book['Date_end'], $row_book['idUser'], $row_book['idRoom'], $row_book['adults'], $row_book['childrens']);
+                }
             }
             if(isset($rooms))
             {
-                return $rooms;
+                $arr = array();
+                $arr['booking'] = $booking;
+                $arr['rooms'] = $rooms;
+                return $arr;
             }else{
                 return "Bạn chưa đặt phòng";
             }
         }
-        public function bookRoomService($idRoom, $idUser,$startDate, $endDate, $Adults, $Chilrens){
-            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
-            mysqli_select_db($con,"quanlyks");
-            include_once('../Models/Entity/ExitRoom.php');
-            $sql = "UPDATE room
-            SET adults = '$Adults', children = '$Chilrens', startDay = STR_TO_DATE('$startDate', '%Y-%m-%d'), enDay = STR_TO_DATE('$endDate', '%Y-%m-%d'), idUser = '$idUser', isbook = 1
-            WHERE idRoom = $idRoom";
-            $result = mysqli_query($con, $sql);
-            if($result)
-            {
-                $sql = "UPDATE user SET numberRoom = numberRoom + 1  WHERE id='$idUser'";
-                $result = mysqli_query($con, $sql);
-                if($result)
-                {
-                    $sql = "SELECT *FROM room WHERE idRoom = $idRoom";
-                    $result = mysqli_query($con, $sql);
-                    while($row = mysqli_fetch_array($result)) {
-                        $roomBook = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
-                    }
-                    return $roomBook;
-                }
-            }else{
-                echo $idRoom;
-            }
-            return "loi";
 
-        }
-        public function getRoombyRequest($idHotel, $search_option, $search_Val)
+        public function getRoombyRequest($idHotel, $search_option, $search_Val, $datestart, $dateend, $adult, $children)
         {
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
             include_once('../Models/Entity/ExitRoom.php');
             if($search_option == 'priceMin')
             {
-                $sql = "SELECT * FROM room  Where idHotel=$idHotel AND price < $search_Val AND isbook=0";
-            }else{
-                $sql = "SELECT * FROM room  Where idHotel=$idHotel AND $search_option LIKE '%$search_Val%' AND isbook=0";
-            }
-            $result = mysqli_query($con, $sql);
-            if(!$result)
-            {
-                return "Không có phòng";
-            }
-
-            $i = 0;
-            while($row = mysqli_fetch_array($result)) {
-                $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
-                $i++;
-            }
-            mysqli_free_result($result);
-            mysqli_close($con);
-            if(isset($rooms))
-            {
-                $arr = array();
+                $sql = "SELECT * FROM room  Where idHotel=$idHotel AND price < $search_Val AND isbook=0 AND adults >= $adult AND children >= $children";
+                $result = mysqli_query($con, $sql);
+                $i = 0;
+                while($row = mysqli_fetch_array($result)) {
+                    $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
+                }
+                $sql_room = "SELECT room.*
+                FROM booking
+                JOIN room ON booking.idRoom = room.idRoom
+                WHERE booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND price < $search_Val";
+                $result = mysqli_query($con, $sql_room);
+                while($row = mysqli_fetch_array($result)) {
+                    $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
+                }
+                $sql = "SELECT *FROM hotels WHERE idHotel = $idHotel";
+                $result = mysqli_query($con, $sql);
+                while($row = mysqli_fetch_array($result)) {
+                    $hotels = new Hotel($row['idHotel'], $row['nameHotel'], $row['numRoom'], $row['Description'], $row['numStart'], $row['idCity'], $row['imgHotel'], $row['address'], $row['idUser'], $row['date']);
+                }
+                $nameHotel = $hotels->getnameHotel();
+                $arrr = array();
                 $arr['rooms'] = $rooms;
+                $arr['nameHotel'] = $nameHotel;
                 return $arr;
+
             }else{
-                return "Không có phòng";
+                    $sql = "SELECT * FROM room  Where idHotel=$idHotel  AND isbook=0 AND adults >= $adult AND children >= $children AND $search_option LIKE '%$search_Val%'";
+                    $result = mysqli_query($con, $sql);
+                    $i = 0;
+                    while($row = mysqli_fetch_array($result)) {
+                        $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
+                    }
+                    $sql_room = "SELECT room.*
+                    FROM booking
+                    JOIN room ON booking.idRoom = room.idRoom
+                    WHERE booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND $search_option LIKE '%$search_Val%'";
+                    $result = mysqli_query($con, $sql_room);
+                    while($row = mysqli_fetch_array($result)) {
+                        $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
+                    }
+                    $sql = "SELECT *FROM hotels WHERE idHotel = $idHotel";
+                    $result = mysqli_query($con, $sql);
+                    while($row = mysqli_fetch_array($result)) {
+                        $hotels = new Hotel($row['idHotel'], $row['nameHotel'], $row['numRoom'], $row['Description'], $row['numStart'], $row['idCity'], $row['imgHotel'], $row['address'], $row['idUser'], $row['date']);
+                    }
+                    $nameHotel = $hotels->getnameHotel();
+                    $arrr = array();
+                    $arr['rooms'] = $rooms;
+                    $arr['nameHotel'] = $nameHotel;
+                    if(count($arr['rooms']) == 0){
+                        $arr['rooms'] = 'Không có phòng';
+                        return $arr;
+                    }
+                    return $arr;
             }
         }
         public function getListRoom($idhotel, $page) {
@@ -99,7 +116,7 @@
             $result = mysqli_query($con, $sql);
             $i = 0;
             while($row = mysqli_fetch_array($result)) {
-                $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
+                $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
                 $i++;
             }
             mysqli_free_result($result);
@@ -115,18 +132,31 @@
                 return "Không có phòng";
             }
         }
-        public function getRoomNotBook($id)
+        public function getRoomNotBook($id, $datestart, $dateend, $adult, $children)
         {
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
             include_once('../Models/Entity/ExitRoom.php');
-            $sql = "SELECT *FROM room WHERE idHotel = $id AND isbook = 0";
+            $sql = "SELECT *FROM room WHERE idHotel = $id AND isbook = 0 AND adults >= $adult AND children >= $children";
             $result = mysqli_query($con, $sql);
             if(mysqli_num_rows($result) > 0)
             {
                 $i = 0;
+                $j = 0;
                 while($row = mysqli_fetch_array($result)) {
-                    $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
+                    $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
+                }
+                $sql_room = "SELECT room.*
+                FROM booking
+                JOIN room ON booking.idRoom = room.idRoom
+                WHERE booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children;";
+   
+                $result = mysqli_query($con, $sql_room);
+                if(mysqli_num_rows($result) > 0)
+                {
+                    while($row = mysqli_fetch_array($result)) {
+                        $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
+                    }
                 }
                 $sql = "SELECT *FROM hotels WHERE idHotel = $id";
                 $result = mysqli_query($con, $sql);
@@ -134,6 +164,7 @@
                     $hotels = new Hotel($row['idHotel'], $row['nameHotel'], $row['numRoom'], $row['Description'], $row['numStart'], $row['idCity'], $row['imgHotel'], $row['address'], $row['idUser'], $row['date']);
                 }
                 $nameHotel = $hotels->getnameHotel();
+                // $rooms = array_merge($rooms, $rooms_date);
                     $arrr = array();
                     $arr['rooms'] = $rooms;
                     $arr['nameHotel'] = $nameHotel;
@@ -160,13 +191,13 @@
             }
             return false;
          }
-         public function addRoom($nameRoom, $Price, $description, $imgRoom, $idHotel)
+         public function addRoom($nameRoom, $Price, $description, $imgRoom, $idHotel, $adults, $children)
          {
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
             include_once('../Models/Entity/ExitRoom.php');
-            $sql = "INSERT INTO room (nameRoom, Description, Price, imgRoom, idHotel)
-            VALUES ('$nameRoom', '$description', '$Price', '$imgRoom', '$idHotel')";
+            $sql = "INSERT INTO room (nameRoom, Description, Price, imgRoom, idHotel, adults, children)
+            VALUES ('$nameRoom', '$description', '$Price', '$imgRoom', '$idHotel', '$adults', '$children')";
             $result = mysqli_query($con, $sql);
             if($result)
             {
@@ -191,7 +222,7 @@
             if($result)
             {
                 while($row = mysqli_fetch_array($result)) {
-                    $rooms = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
+                    $rooms = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'], $row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
                 }
                 return $rooms;
             }else return "Loi";

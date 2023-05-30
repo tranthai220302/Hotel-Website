@@ -4,6 +4,10 @@
 	<title>User List</title>
   <link rel="stylesheet" href="../../../Hotel-Website/css/home1.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="../../../Hotel-Website/Views/Hotels/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	<style>
 
 .user-menu{
@@ -37,7 +41,7 @@
 	margin: 0;
 	padding: 0;
 	background-image: url('./31.jpg');
-	background-position:0px -200px;
+	background-position:0px 100px;
 }
 * {
   margin: 0;
@@ -179,7 +183,12 @@
     margin-bottom: 10px;
 
 	}
-
+  .img{
+	width: 297px;
+	height: 162px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
 	.pagination a.active, .pagination a:hover {
 		background-color:darkslategray;
 		color: black;
@@ -267,6 +276,51 @@
 				</div>
 		</div>
     <h2 class ='title'>Danh sách khách hàng</h2>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasExampleLabel">Add Room</h5>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<form action='../../../Hotel-Website/Controllers/RoomController.php?action=addRoom' method='post' enctype='multipart/form-data'>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' >Name Room</label>
+				<input type='text' class='form-control' placeholder='Name Hotel' id='inputDefault' name = 'nameRoom' required>
+			</div>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Price</label>
+				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'Price' required>
+			</div>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Adults</label>
+				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'adults' required>
+			</div>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Childrens</label>
+				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'childrens' required>
+			</div>
+			<div class='form-group'>
+			<label for='exampleTextarea' style='margin-top: 30px;'>Description</label>
+			<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description' required></textarea>
+			</div>
+			<div class='form-group'>
+				<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Anh</label>
+				<input class='form-control' type='file' id='formFile' name='imgRoom' accept='image/*' required>
+			</div>
+			<div class='dropdown mt-3' style='margin-top: 30px;'>
+				
+			<button type='submit' class='btn btn-success'>Success</button>
+			</form>
+			</div>
+		</div>
+		</div>
+		<div class="img_body">
+		<div class = 'add' style="color:black;">
+		<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+		<i class="fa-solid fa-plus">
+		</i>Create User
+		</button>
+		</div>
 	<table class="table" style="margin-top: 30px;">
 		<thead>
 			<tr>
@@ -278,6 +332,7 @@
 				<th>Address</th>
 				<th>Booked Rooms</th>
         <th>Update User</th>
+        <th>Edit User</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -300,7 +355,52 @@
                       <td>".$User->getPhone()."</td>
                       <td>".$User->getAddress()."</td>
                       <td>".$isRoom."</td>
-                      <td style ='text-decoration: none;'><a href='../../../Hotel-Website/Controllers/UserController.php?action=updateAdmin&id=".$User->getId()."'>Update admin</a></td>
+                      <td style ='text-decoration: none;'><a href='../../../Hotel-Website/Controllers/UserController.php?action=deleteUser&id=".$User->getId()."'>Delete</a></td>
+                      <td style ='text-decoration: none;'>
+                      <button class='btn btn-primary' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample".$User->getId()."' aria-controls='offcanvasExample".$User->getId()."'>
+                        Edit
+                      </button>
+                      <div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample".$User->getId()."' aria-labelledby='offcanvasExampleLabel'>
+                        <div class='offcanvas-header'>
+                          <h5 class='offcanvas-title' id='offcanvasExampleLabel'>Detail User</h5>
+                          <button type='button' class='btn-close text-reset' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+                        </div>
+                        <div class='offcanvas-body'>
+                        <div class='offcanvas-body'>
+                        <form action='../../../Hotel-Website/Controllers/UserController.php?action=editUser&id=".$User->getId()."' method='post' enctype='multipart/form-data'>
+            
+                        <div class='form-group'>
+                        <img class = 'img' src='../../../Hotel-Website/image/user/".$User->getImg()."'>
+                      </div>
+                        <div class='form-group'>
+                          <label class='col-form-label' for='inputDefault' >First Name</label>
+                          <input type='text' class='form-control' placeholder='Name Hotel' id='inputDefault' name = 'firstname'  value = '".$User->getFirstName()."'>
+                        </div>
+                        <div class='form-group'>
+                        <label class='col-form-label' for='inputDefault' >Last Name</label>
+                        <input type='text' class='form-control' placeholder='Name Hotel' id='inputDefault' name = 'lastname'  value = '".$User->getLastName()."'>
+                      </div>
+                        <div class='form-group'>
+                          <label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Email</label>
+                          <input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'email'  value = '".$User->getEmail()."'>
+                        </div>
+                        <div class='form-group'>
+                        <label for='exampleTextarea' style='margin-top: 30px;'>Phone</label>
+                        <input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'phone-number'  value = '".$User->getPhone()."'>
+                        </div>
+            
+                        <div class='form-group'>
+                        <label for='exampleTextarea' style='margin-top: 30px;'>Address</label>
+                        <input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'address'  value = '".$User->getAddress()."'>
+                        </div>
+                          
+                        <button type='submit' class='btn btn-success' style='margin-top: 20px;'>Edit</button>
+                        </form>
+                      </div>
+                          </div>
+                        </div>
+                      </div>
+                      </td>
                       </tr>";
                   }
             }
@@ -313,7 +413,7 @@
 	if(isset($listUser['users']))
 	{
 		echo "<div class='pagination'>";
-		for ($i = 1; $i <= $listUser['numPage']; $i++) {
+		for ($i = 1; $i < $listUser['numPage']; $i++) {
 			$active = $i == $listUser['page'] ? "active" : "";
 			echo "<a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser&id=&page=$i' class='$active'>$i</a>";
 		}

@@ -9,10 +9,7 @@
         private $adult;
         private $children;
         private $isbook;
-        private $startDay;
-        private $endDay;
-        private $idUser;
-        public function __construct($idRoom, $nameRoom, $idHotel, $description, $Price,  $imgRoom, $adult, $children, $isbook, $startDay, $endDay, $idUser)
+        public function __construct($idRoom, $nameRoom, $idHotel, $description, $Price,  $imgRoom, $adult, $children, $isbook)
         {
             $this->idRoom = $idRoom;
             $this->nameRoom = $nameRoom;
@@ -23,22 +20,8 @@
             $this->adult = $adult;
             $this->children = $children;
             $this ->isbook = $isbook;
-            $this->startDay = $startDay;
-            $this->endDay = $endDay;
-            $this->idUser = $idUser;
 
-        }
-        public function getidUser()
-        {
-            return $this->idUser;
-        }
-        public function getstartDay()
-        {
-            return $this->startDay;
-        }
-        public function getendDay()
-        {
-            return $this->endDay;
+
         }
         public function getAdult()
         {

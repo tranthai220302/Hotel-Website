@@ -36,9 +36,7 @@
                     case 'getBookRoom':
                         $this->getBookRoom();
                         break;
-                    case 'bookRoom':
-                        $this->bookRoom();
-                        break;
+
                     case 'search':
                         $this->search();
                         break;
@@ -51,45 +49,10 @@
             $idHotel = $_SESSION['id_hotel'];
             $search_option = $_POST['search'];
             $searc_Val = $_POST['val'];
-            $arr = $this->adminService->getRoombyRequest($idHotel, $search_option, $searc_Val);
+            $arr = $this->adminService->getRoombyRequest($idHotel, $search_option, $searc_Val, $_SESSION['datestart'], $_SESSION['dateend'], $_SESSION['adult'], $_SESSION['children']);
             include_once('../Views/bookRoom/Rooms.php');
         }
-        public function bookRoom()
-        {
-            $idRoom = $_GET['id'];
-            if(!isset($_SESSION['login']))
-            {
-                $_SESSION['is_loading'] = 1;
-                echo "<script>alert('Bạn cần đăng nhập trước khi đặt phòng!')</script>";
-                header("refresh:0; url=../Views/login.php");
-            }else
-            if($_SESSION['login'])
-            {
-                $startDate = $_POST['startDate'];
-                $endDate = $_POST['endDate'];
-                $Adults = $_POST['Adults'];
-                $Chilrens = $_POST['Childrens'];
-                $idUser = $_SESSION['user']['id'];
-                $book_room = $this->adminService->bookRoomService($idRoom, $idUser, $startDate, $endDate, $Adults, $Chilrens);
-                if(!is_string($book_room))
-                {
-                    $username = $_SESSION['user']['username'];
-                    $nameRoom = $book_room->getnameRoom();
-                    $price = $book_room->getPrice();
-                    $send_mail = $_SESSION['user']['email'];
-                    include_once('../Mail/sendMail/sendMail.php');
-                    if($sendMail == 'oke')
-                    {
-                        echo "<script>alert('Đặt phòng thành công!')</script>";
-                        $link = "../Controllers/RoomController.php?action=book&is=1";
-                        header("refresh:0; url=../Controllers/RoomController.php?action=book&is=1");
-                    }
-                    
-                }
-            }else{
-                include_once('../Views/login.php');
-            }
-        }
+
         public function getBookRoom()
         {
             $id = $_GET['id'];
@@ -119,11 +82,11 @@
                     $link = "../Controllers/HotelController.php?action=getHotelHome&id=".$_SESSION['id_hotel']."&isession=1&err=".$err."";
                     header("Location: $link");
                 }else{
-                    $arr = $this->adminService->getRoomNotBook($_SESSION['id_hotel']);
+                    $arr = $this->adminService->getRoomNotBook($_SESSION['id_hotel'], $_SESSION['datestart'], $_SESSION['dateend'], $_SESSION['adult'], $_SESSION['children']);
                     include_once('../Views/bookRoom/Rooms.php');
                 }
             }else{
-            $arr = $this->adminService->getRoomNotBook($_SESSION['id_hotel']);
+            $arr = $this->adminService->getRoomNotBook($_SESSION['id_hotel'], $_SESSION['datestart'], $_SESSION['dateend'], $_SESSION['adult'], $_SESSION['children']);
             include_once('../Views/bookRoom/Rooms.php');
             }
 
@@ -134,7 +97,7 @@
             if($_SESSION['login'])
             {
                 $id = $_GET['id'];
-                $rooms = $this->adminService->getRoombyUser($id);
+                $arr = $this->adminService->getRoombyUser($id);
                 include_once('../Views/User/UserbookRoom.php');
             }
             
@@ -156,10 +119,12 @@
                 $nameRoom = $_POST['nameRoom'];
                 $Price = $_POST['Price'];
                 $description = $_POST['description'];
+                $adults = $_POST['adults'];
+                $children = $_POST['childrens'];
                 $imgRoom = $_FILES['imgRoom']['name'];
                 $idHotel = $_SESSION['id_hotel'];
 
-                $AddRoom = $this->adminService->addRoom($nameRoom, $Price, $description, $imgRoom, $idHotel);
+                $AddRoom = $this->adminService->addRoom($nameRoom, $Price, $description, $imgRoom, $idHotel, $adults, $children);
                 $target_dir = "../image/room/"; // Thư mục lưu trữ tệp tin
                 $target_file = $target_dir . basename($_FILES["imgRoom"]["name"]); // Đường dẫn của tệp tin sau khi được upload
                 move_uploaded_file($_FILES["imgRoom"]["tmp_name"], $target_file);

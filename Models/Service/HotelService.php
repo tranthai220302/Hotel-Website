@@ -153,7 +153,7 @@
                 $result = mysqli_query($con, $sql);
                 $i = 0;
                 while($row = mysqli_fetch_array($result)) {
-                    $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
+                    $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
                     $i++;
                 }
                 /*ds city*/

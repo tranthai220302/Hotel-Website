@@ -1,30 +1,22 @@
 <?php
 include_once('../Models/Entity/Room.php');
-$sql = "SELECT  *FROM room";
-$result = mysqli_query($con, $sql);
-$i = 0;
+include_once('../Models/Entity/Booking.php');
+$k = 0;
 $iscc = 0;
 $currentDate = date('Y-m-d');
+$sql_book = "SELECT *FROM booking WHERE Date_end < '$currentDate'";
+$result = mysqli_query($con, $sql_book);
 while($row = mysqli_fetch_array($result)) {
-    $rooms_check[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
-    $i++;
-}
-foreach($rooms_check as $room)
-{
-    $iscc = 0;
-    $idRoom_check = $room->getidRoom();
-    $idUser_check = $room->getidUser();
-    if($currentDate > $room->getendDay())
-    {
-        $iscc = 1;
-        $sql = "UPDATE room SET isbook = 0, startDay = 0, enDay = 0, idUser = 0, adults = 0, children = 0 WHERE idRoom = $idRoom_check ";
-        $result = mysqli_query($con, $sql);
-        if($result)
-        {
-            $sql = "UPDATE user SET numberRoom = numberRoom - 1 WHERE id = $idUser_check ";
-            $result = mysqli_query($con, $sql);
-        }
-        // include_once('../Mail/sendMail/sendexitRoom.php');
+    $book_check[$k++] = new Booking($row['id'], $row['Date_start'], $row['Date_end'], $row['idUser'], $row['idRoom'], $row['adults'], $row['childrens']);
+    $id_book= $row['id'];
+    $sql_room = "UPDATE room
+        INNER JOIN booking ON room.idRoom = booking.idRoom
+        SET room.isbook = room.isbook - 1
+        WHERE room.isbook != 0 AND booking.id = $id_book";
+    $result_room = mysqli_query($con, $sql_room);
+    if($result_room){
+        $sql_delete_book = "DELETE FROM booking WHERE id = $id_book";
+        $result_delete =  mysqli_query($con, $sql_delete_book);
     }
     $iscc = 0;
 }

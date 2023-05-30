@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../../../Hotel-Website/Views/Room/css/ListRoom.css">
-    <link rel="stylesheet" href="../../../Hotel-Website/css/home1.css">
+	<link rel="stylesheet" type="text/css" href="../../../Hotel-Website/Views/Room/css/ListRoom2.css">
+	<link rel="stylesheet" href="../../../Hotel-Website/css/home1.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 <style>
@@ -13,8 +13,8 @@
 </style>
 <body>
 <div class="img_body">
-<div class="navbar">
-		<div class="navContainer">
+<div class="navbar1">
+		<div class="navContainer1">
 
           <?php
           if($_SESSION['user']['isAdmin'] == 1)
@@ -67,27 +67,27 @@
       ?>
 		</div>
 	  </div>
-		<div class="header">
-			<div class= "headerContainer listMode">
-			  <div class="headerList">
-				<div class="headerListItem active">
+		<div class="header1">
+			<div class= "header1Container listMode">
+			  <div class="header1List">
+				<div class="header1ListItem active">
 				  <span>Stays</span>
 				</div>
-				<div class="headerListItem">
+				<div class="header1ListItem">
 				  <span>Flights</span>
 				</div>
-				<div class="headerListItem">
+				<div class="header1ListItem">
 				  <span>Car rentals</span>
 				</div>
-				<div class="headerListItem">
+				<div class="header1ListItem">
 				  <span>Attractions</span>
 				</div>
-				<div class="headerListItem">
+				<div class="header1ListItem">
 				  <span>Airport taxis</span>
 				</div>
 			  </div>
 		
-				  <p class="headerDesc">
+				  <p class="header1Desc">
 					
 				  </p>         
 				</div>
@@ -107,12 +107,12 @@
         ?>
 	<main>
 	<?php
-    if(is_string($rooms))
+    if(is_string($arr))
     {
-        echo "<div style = 'color: red;''>$rooms</div>";
+        echo "<div style = 'color: red;''>Không có phòng</div>";
     }else{
-        			
-			foreach($rooms as $room)
+        	$i = 0;		
+			foreach($arr['rooms'] as $room)
 			{
 				$isbook = $room->getIsbook() == 0 ? "Phòng trống" : "Bạn đã đặt phòng này";
 				echo "
@@ -121,11 +121,11 @@
 				<img src='../../../Hotel-Website/image/room/".$room->getImg()."'>
 				<div class = 'content'>
 					<h2>".$room->getnameRoom()."</h2>
-					<div class='rating'>Giá: ".$room->getPrice()."</div>
-					<p>Adults: ".$room->getAdult()."</p>
-					<p>Children: ".$room->getChildren()."</p>
+					<div class='rating'>Giá: ".$room->getPrice()."$</div>
+					<p>Adults: ".$arr['booking'][$i]->getAdults()."</p>
+					<p>Children: ".$arr['booking'][$i]->getChildrens()."</p>
 					<p>Status: ".$isbook."</p>
-					<p>Time: ".$room->getstartDay()." -> ".$room->getendDay()."</p>
+					<p>Date: ".$arr['booking'][$i]->getstartDate()." --> ".$arr['booking'][$i]->getendDate()."</p>
 					<p class = 'des'>".$room->getdescription()."</p>
 				</div>
 				</div>
@@ -133,6 +133,7 @@
 		
 		
 				";
+				$i++;
 			} 
     }
 

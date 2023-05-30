@@ -45,8 +45,8 @@
                     case 'detailUser':
                         $this->detaiUser();
                         break;
-                    case 'updateAdmin':
-                        $this->updateAdmin();
+                    case 'deleteUser':
+                        $this->deleteUser();
                         break;
                     case 'userbookRoom':
                         $this->UserbookRoom();
@@ -63,6 +63,27 @@
                     case 'createUserByHotel':
                         $this->createUserByHotel();
                         break;
+                    case 'editUser':
+                        $this->editUsers();
+                        break;
+                }
+            }
+        }
+        public function editUsers(){
+            if($_SESSION['user']['isAdmin'] == 1){
+                $id = $_GET['id'];
+                $firstName = $_POST['firstname'];
+                $lastName = $_POST['lastname'];
+                $phonenumber = $_POST['phone-number'];
+                $address = $_POST['address'];
+                $email = $_POST['email'];
+                $User_edit = $this->adminService->editUser($id, $firstName, $phonenumber, $address, $email, $lastName);
+                if(is_array($User_edit))
+                {
+                    echo 'Loi';
+                }else{
+                    $link = '../Controllers/UserController.php?action=listUser';
+                    header("refresh:0; url=$link");
                 }
             }
         }
@@ -105,11 +126,11 @@
                 include_once('../Views/Employee/ListCustomer.php');
             }
         }
-        public function updateAdmin()
+        public function deleteUser()
         {
             $idUser = $_GET['id'];
-            $updateAdmin = $this->adminService->updateAdmin($idUser);
-            if($updateAdmin)
+            $deleteUser = $this->adminService->deleteUser($idUser);
+            if($deleteUser)
             {
                 $link = '../Controllers/UserController.php?action=listUser';
                 header("refresh:0; url=$link");

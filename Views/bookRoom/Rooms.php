@@ -308,36 +308,39 @@ input[type="submit"]:hover {
         <th>Các lựa chọn</th>
         <th></th>
       </tr>
+      <img src="../../../Hotel-Website/image/room/" alt="">
     </thead>
     <tbody>
       <?php
       if(isset($arr['rooms']))
       {
-        
-        foreach($arr['rooms'] as $room)
-        {
-          $i++;
-          echo "
-          <tr>
-          <td style='width: 40%;'> 
-            <h2>".$room->getnameRoom()."</h2>
-            <p class = 'des'>M".$room->getdescription()."</p>
-          </td>
-          <td>$".$room->getPrice()."</td>
-          <td>
-            <ul>
-              <li>Wifi miễn phí</li>
-              <li>Máy điều hòa</li>
-              <li>Phòng tắm riêng</li>
-              <li>Bàn làm việc</li>
-            </ul>
-          </td>
-          <td><a class = 'link1' href='../../Hotel-Website/Controllers/RoomController.php?action=getBookRoom&id=".$room->getidRoom()."'>Đặt phòng</a></td>
-          </tr>
-          ";
+        if(is_string($arr['rooms'])){
+          echo "<div style = 'color: red; margin-top: 30px;'>".$arr['rooms']."</div>";
+        }else{
+          foreach($arr['rooms'] as $room)
+          {
+            $i++;
+            echo "
+            <tr>
+            <td><img src='../../../Hotel-Website/image/room/".$room->getImg()."' alt='></td>
+            <td style='width: 40%;'> 
+              <h2>".$room->getnameRoom()."</h2>
+              <p class = 'des'>M".$room->getdescription()."</p>
+            </td>
+            <td>$".$room->getPrice()."</td>
+            <td>
+              <ul>
+                <li>Wifi miễn phí</li>
+                <li>Máy điều hòa</li>
+                <li>Phòng tắm riêng</li>
+                <li>Bàn làm việc</li>
+              </ul>
+            </td>
+            <td><a class = 'link1' href='../../Hotel-Website/Controllers/RoomController.php?action=getBookRoom&id=".$room->getidRoom()."'>Đặt phòng</a></td>
+            </tr>
+            ";
+          }
         }
-      } else{
-        echo "<div style = 'color: red; margin-top: 30px;'>".$arr."</div>";
       }
       ?>
     </tbody>

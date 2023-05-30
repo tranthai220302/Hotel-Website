@@ -78,11 +78,11 @@
             $hotel=  new Hotel($row['idHotel'], $row['nameHotel'], $row['numRoom'], $row['Description'], $row['numStart'], $row['idCity'], $row['imgHotel'], $row['address'], $row['idUser'], $row['date']);
             return $hotel;
         }
-        public function updateAdmin($idUser)
+        public function deleteUser($idUser)
         {
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
-            $sql = "UPDATE user SET isAdmin = 1 WHERE id='$idUser'";
+            $sql = "DELETE FROM user WHERE id='$idUser'";
             $result = mysqli_query($con, $sql);
             if($result)
             {
@@ -93,12 +93,12 @@
         public function getListUser($page) {
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
-            $limit = 12;
+            $limit = 10;
             $start = ($page - 1) * $limit;
             $sql = "SELECT *FROM user";
             $result = mysqli_query($con, $sql);
             $num = mysqli_num_rows($result)/$limit;
-            $sql = "SELECT *FROM user WHERE isAdmin=0 LIMIT $start, $limit";
+            $sql = "SELECT *FROM user WHERE isAdmin=0 AND isHotel = 0 LIMIT $start, $limit";
             $result = mysqli_query($con, $sql);
             $i = 0;
             while($row = mysqli_fetch_array($result)) {
@@ -115,7 +115,7 @@
                 $arr['page']= $page;
                 return $arr;
             }else{
-                return "Không có phòng";
+                return "Không có khách hàng";
             }
         }
         public function getHome()
