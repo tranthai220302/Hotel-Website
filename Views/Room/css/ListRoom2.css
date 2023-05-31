@@ -2,16 +2,14 @@ body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	background-image: url('../../../image/home/31.jpg');
-	background-position:0px 100px;
 }
 
-header1 {
+/* header1 {
 	background-color: #333;
 	color: #fff;
 	padding: 20px;
 	text-align: center;
-}
+} */
 
 h1 {
 	margin: 0;
@@ -21,17 +19,21 @@ main {
 	margin: 20px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .hotel {
-	width: calc(50%-100px);
+	width: 48%;
 	margin-bottom: 20px;
 	background-color: #f7f7f7;
 	border-radius: 5px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 	padding: 10px;
 	margin-bottom: 50px;
+}
+
+.hotel_item img{
+  width: 40%;
 }
 
 .img{
@@ -300,6 +302,10 @@ footer {
 		background-color:darkslategray;
 		color: black;
 	}
-	.img_body{
-        
-	}
+	.title{
+    text-align: center;
+    margin-top: 20px;
+    color: rgb(38 55 96);
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+    font-size: 35px;
+    }

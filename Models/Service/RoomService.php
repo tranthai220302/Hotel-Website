@@ -122,6 +122,7 @@
             include_once('../Models/Entity/ExitRoom.php');
             $sql = "SELECT *FROM room WHERE idHotel = $id AND isbook = 0";
             $result = mysqli_query($con, $sql);
+
             if(mysqli_num_rows($result) > 0)
             {
                 $i = 0;

@@ -44,16 +44,16 @@
 ?>
 <body>
 <header class="header" id="navigation-menu">
-		<div class="container">
-			<nav>
+		<div class="container" style="height: 60px;">
+			<nav style="padding: 0;">
 				<a href="#" class="logo"> <img src="../../image/home/logo.png" alt=""> </a>
 				<ul class="nav-menu">
 					<?php
 						if($_SESSION['user']['isAdmin'] == 1)
 						{
 							echo "
-							<li> <a href='../Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
-							<li> <a href='../Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
+							<li> <a href='../../Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
+							<li> <a href='../../Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
 							<a href='../Controllers/CityController.php?action=listHotel'></a>
 							<li><div class='user-menu'>
 							<div class='username' >
@@ -89,6 +89,7 @@
   </header>
 
   <div class="top">
+  <h2 class ='title'>Thông tin cá nhân</h2>
   <form action="../../../Hotel-Website/Controllers/UserController.php?action=edit" method="post">
   <div class="user-profile">
         <img class = 'img' src="../../../Hotel-Website/image/user/<?php echo $srcImg; ?>" alt="">
@@ -124,7 +125,7 @@
         </div>
         <div class="btn-group">
           <div class="back">
-            <a href="../Controllers/CityController.php?action=listCity"><i class="fa-solid fa-arrow-left"></i>Back</a>
+            <a href="../../Controllers/CityController.php?action=listCity"><i class="fa-solid fa-arrow-left"></i>Back</a>
           </div>
           <input type="submit" value="Edit" class="submit">
         </div>

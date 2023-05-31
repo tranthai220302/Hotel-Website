@@ -4,14 +4,143 @@
     box-sizing: border-box;
 }
 
-.user-menu{
+.user-menu-u{
     position: relative;
     z-index: 9999;
-}
+  }
+  .user-menu-u .menu-u {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -150px; /* điều chỉnh vị trí sang phải 10px */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    border-radius: 10px;
+    padding-left: 20px;
+
+  }
+  
+  .user-menu-u .menu-u li {
+    margin-top: 20px;
+    margin-left: -6px;
+  }
+  
+  .user-menu-u:hover .menu-u {
+    display: block;
+  }
+  
+  .username-u {
+    height: 40px;
+    width: 40px;
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .username-u:hover {
+    background-color: #e5e5e5;
+    cursor:pointer;
+  }
+  
+  .menu-u a {
+    text-decoration: none;
+    color: #333 !important;
+    display: block;
+    transition: background-color 0.2s ease;
+    padding: 5px 3px;
+    border-radius: 5px;
+  }
+  
+  .menu-u a:hover {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    color: #000 !important;
+  }
+  .avatar{
+    margin: -11px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+
+/*--------------header--------*/
+
+.header-user {
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #263760;
+    border-bottom: 0.5px solid #f8f8f9;
+    z-index: 5;
+  }
+  
+  .logo img {
+    width: 120px;
+  }
+  
+  .header-user nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .nav-link:hover {
+    color: #C1B086 !important;
+  }
+  
+  .hambuger {
+    display: none;
+  }
+  
+  .slide{
+    width: 100%;
+  }
+  
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: #fff;
+  }
+  
+  .header-user ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-user ul li {
+    margin-left: 3rem;
+  }
+  
+  .header-user ul li a {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: white;
+    transition: 0.5s;
+  }
+  
+  .header-user ul li a:hover {
+    color: #C1B086;
+  }
+  
 
 .table {
     border-collapse: collapse;
-    width: 90%;
+    width: 90% !important;
     margin: 30px auto;
 }
 
@@ -22,7 +151,7 @@ border: 1px solid rgb(255, 255, 255);
 }
 
 .table th {
-background-color: rgb(38 55 96);
+background-color: rgb(38 55 96) !important;
 color: rgb(255, 255, 255);
 font-weight: 700;
 border: 1px solid rgb(255, 255, 255);
@@ -32,7 +161,7 @@ border: 1px solid rgb(255, 255, 255);
 font-family: "Courier New";
 color: rgb(38 55 96);
 font-weight: 600;
-background-color: rgba(255, 255, 255, 0.637);
+background-color: rgba(255, 255, 255, 0.527);
 }
 
 body {
