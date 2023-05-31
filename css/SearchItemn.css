@@ -610,9 +610,7 @@
 .comment-form button:hover {
   background-color: #00688B;
 }
-.review{
-  
-}
+
 .comment-list {
   margin-top: 20px;
 }
@@ -659,10 +657,6 @@
   color: #999;
   margin-left: 20px;
   margin-bottom: 25px;
-}
-
-.comment-body {
-
 }
 
 .comment-body p {
