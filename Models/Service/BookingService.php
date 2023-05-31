@@ -23,12 +23,13 @@
                     $sql = "SELECT *FROM room WHERE idRoom = $idRoom ";
                     $result = mysqli_query($con, $sql);
                     while($row = mysqli_fetch_array($result)) {
-                        $roomBook = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook'], $row['startDay'], $row['enDay'], $row['idUser']);
+                        $roomBook = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
                     }
                     return $roomBook;
                 }else return 'loi';
 
             }
+            echo "cc";
             return "loi";
 
         }

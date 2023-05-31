@@ -278,34 +278,34 @@
     <h2 class ='title'>Danh sách khách hàng</h2>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 		<div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="offcanvasExampleLabel">Add Room</h5>
+			<h5 class="offcanvas-title" id="offcanvasExampleLabel">Add User</h5>
 			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		</div>
 		<div class="offcanvas-body">
 			<form action='../../../Hotel-Website/Controllers/RoomController.php?action=addRoom' method='post' enctype='multipart/form-data'>
 			<div class='form-group'>
-				<label class='col-form-label' for='inputDefault' >Name Room</label>
-				<input type='text' class='form-control' placeholder='Name Hotel' id='inputDefault' name = 'nameRoom' required>
+				<label class='col-form-label' for='inputDefault' >First Name</label>
+				<input type='text' class='form-control' placeholder='First Name' id='inputDefault' name = 'firstname' required>
 			</div>
 			<div class='form-group'>
-				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Price</label>
-				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'Price' required>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Last Name</label>
+				<input type='text' class='form-control' placeholder='Last Name' id='inputDefault' name = 'lastname' required>
 			</div>
 			<div class='form-group'>
-				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Adults</label>
-				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'adults' required>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Email</label>
+				<input type='text' class='form-control' placeholder='Email' id='inputDefault' name = 'email' required>
 			</div>
 			<div class='form-group'>
-				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Childrens</label>
-				<input type='text' class='form-control' placeholder='Price' id='inputDefault' name = 'childrens' required>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Phone Number</label>
+				<input type='text' class='form-control' placeholder='Phone Number' id='inputDefault' name = 'phone-number' required>
 			</div>
 			<div class='form-group'>
-			<label for='exampleTextarea' style='margin-top: 30px;'>Description</label>
-			<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description' required></textarea>
+				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Address</label>
+				<input type='text' class='form-control' placeholder='Address' id='inputDefault' name = 'address' required>
 			</div>
 			<div class='form-group'>
 				<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Anh</label>
-				<input class='form-control' type='file' id='formFile' name='imgRoom' accept='image/*' required>
+				<input class='form-control' type='file' id='formFile' name='imgUser' accept='image/*' required>
 			</div>
 			<div class='dropdown mt-3' style='margin-top: 30px;'>
 				

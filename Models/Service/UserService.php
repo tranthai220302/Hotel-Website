@@ -26,46 +26,30 @@
         public function UserbookRoom($id_hotel){
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
-            $sql = "SELECT *FROM room WHERE isbook = 1 AND idHotel = '".$id_hotel."'";
-            $result = mysqli_query($con, $sql);
+            $sql_booking = "SELECT booking.*
+            FROM booking
+            INNER JOIN room ON booking.idRoom = room.idRoom
+            WHERE room.idHotel = $id_hotel
+            GROUP BY booking.idRoom, booking.idUser
+            HAVING COUNT(*) = 1
+            ";
+            $users = [];
+            $result = mysqli_query($con, $sql_booking);
             $i = 0;
-            if(!$result){
-                echo "cc";
-                return false;
-            }
-            while($row = mysqli_fetch_array($result)) {
-                $sql_1 = "SELECT *FROM user WHERE id= '".$row['idUser']."'";
-                $result1 = mysqli_query($con, $sql_1);
-                if(!$result1){
-                    return false;
-                }
-                $row1 =  mysqli_fetch_assoc($result1);
-                $users[$i++] = new User($row1['id'], $row1['username'], $row1['password'], $row1['email'], $row1['isAdmin'], $row1['address'], $row1['phoneNumber'], $row1['img'], $row1['firstName'], $row1['lastName'], $row1['numberRoom'], $row1['isHotel']);
-            }
-            $uniqueArr = [];
-
-// Lặp qua từng đối tượng trong mảng ban đầu
-            foreach ($users as $obj) {
-                // Kiểm tra xem đối tượng đã tồn tại trong mảng mới chưa
-                $isObjectExists = false;
-                foreach ($uniqueArr as $uniqueObj) {
-                    if ($uniqueObj->getId() == $obj->getId()) {
-                        $isObjectExists = true;
-                        break;
-                    }
-                }
-
-                // Nếu đối tượng chưa tồn tại, thêm nó vào mảng mới
-                if (!$isObjectExists) {
-                    $uniqueArr[] = $obj;
+            while($row1 = mysqli_fetch_array($result)) {
+                $idUser =  $row1['idUser'];
+                $sql = "SELECT *FROM user WHERE id = $idUser";
+                $result = mysqli_query($con, $sql);
+                while($row = mysqli_fetch_array($result)){
+                    $users[$i++] = new User($row['id'], $row['username'], $row['password'], $row['email'], $row['isAdmin'], $row['address'], $row['phoneNumber'], $row['img'], $row['firstName'], $row['lastName'], $row['numberRoom'], $row['isHotel']);     
                 }
             }
 
             mysqli_free_result($result);
             mysqli_close($con);
 
-            if($uniqueArr){
-                return $uniqueArr;
+            if(count($users)){
+                return $users;
             }
             return false;
         }
