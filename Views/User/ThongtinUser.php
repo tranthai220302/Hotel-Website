@@ -9,7 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="../../image/icon.png">
+    <title>Sochi</title>
+    <link rel="stylesheet" href="../../../Hotel-Website/css/home.css">
     <link rel="stylesheet" href="../../../Hotel-Website/css/ThongtinUser.css">
     <link rel="stylesheet" href="../../../Hotel-Website/css/home1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -39,89 +41,55 @@
       $isAdmin = 'Khách hàng';
     }
     $email = isset($_SESSION['user']['email'])? $_SESSION['user']['email'] : '';
-
-
 ?>
 <body>
-<div class="navbar">
-		<div class="navContainer">
-      <?php
-          if($_SESSION['user']['isAdmin'] == 1)
-          {
-           
-            echo "
-            <a href='../../../Hotel-Website/Controllers/UserController.php?action=home_admin'><span class='logo' style='color: black;'>Sochi</span></a>
-            <div class='user-menu'>
-            <div class='username'>
-            <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
-            </div>
-            <ul class='menu'>
-                <li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity'>Quan ly khach san</a></li>
-                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser'>Danh sách người dùng</a></li>
-                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
-                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
-            </ul>
-          </div>
-            ";
-          }
-          else if($_SESSION['user']['isAdmin'] == 0 && $_SESSION['user']['isHotel'] == 0){
-            echo "
-            <a href='../../../Hotel-Website/Controllers/UserController.php?action=home'><span class='logo' style='color: black;'>Sochi</span></a>
-            <div class='user-menu'>
-            <div class='username'>
-            <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
-            </div>
-            <ul class='menu'>
-                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thong tin ngươi dùng</a></li>
-                <li><a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li>
-                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
-            </ul>
-          </div>
-            ";
-          }else if($_SESSION['user']['isHotel'] == 1){
-            echo "
-            <a href='../../../Hotel-Website/Controllers/UserController.php?action=home2'><span class='logo' style='color: black;'>Sochi</span></a>
-            <div class='user-menu'>
-            <div class='username'>
-            <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
-            </div>
-            <ul class='menu'>
-            <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Quan ly khach san</a></li>
-                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>Danh sách khách hàng</a></li>
-                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
-                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
-            </ul>
-          </div>";
-          }
-      ?>
+<header class="header" id="navigation-menu">
+		<div class="container">
+			<nav>
+				<a href="#" class="logo"> <img src="../../image/home/logo.png" alt=""> </a>
+				<ul class="nav-menu">
+					<?php
+						if($_SESSION['user']['isAdmin'] == 1)
+						{
+							echo "
+							<li> <a href='../Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
+							<li> <a href='../Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
+							<a href='../Controllers/CityController.php?action=listHotel'></a>
+							<li><div class='user-menu'>
+							<div class='username' >
+							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+							</div>
+								<ul class='menu'>
+									<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+									<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+								</ul>
+							</div></li>";
+						} else if($_SESSION['user']['isAdmin'] == 0){
+							echo "
+							<li> <a href='#home' class='nav-link'>Home</a> </li>
+							<li> <a href='#about' class='nav-link'>About</a> </li>
+							<li> <a href='#room' class='nav-link'>Rooms</a> </li>
+							<li> <a href='#map' class='nav-link'>Map</a> </li>
+							<li><a href='../Controllers/CityController.php?action=listHotel'></a></li>
+							<div class='user-menu'>
+							<div class='username'>
+							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+							</div>
+							<ul class='menu'>
+								<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+								<li><a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li>
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+							</ul>
+						</div>";
+						}
+					?>
+				</ul>
+			</nav>
 		</div>
-	  </div>
-		<div class="header">
-			<div class= "headerContainer listMode">
-			  <div class="headerList">
-				<div class="headerListItem active">
-				  <span>Stays</span>
-				</div>
-				<div class="headerListItem">
-				  <span>Flights</span>
-				</div>
-				<div class="headerListItem">
-				  <span>Car rentals</span>
-				</div>
-				<div class="headerListItem">
-				  <span>Attractions</span>
-				</div>
-				<div class="headerListItem">
-				  <span>Airport taxis</span>
-				</div>
-			  </div>
-		
-				  <p class="headerDesc">
-					
-				  </p>         
-				</div>
-		</div>
-    <form action="../../../Hotel-Website/Controllers/UserController.php?action=edit" method="post">
+  </header>
+
+  <div class="top">
+  <form action="../../../Hotel-Website/Controllers/UserController.php?action=edit" method="post">
   <div class="user-profile">
         <img class = 'img' src="../../../Hotel-Website/image/user/<?php echo $srcImg; ?>" alt="">
         <div class = 'profile_main'>
@@ -154,14 +122,15 @@
               </div>
           </div>
         </div>
-        <div class="btn">
-        <div class="back">
-        <a href="../../../Hotel-Website /Controllers/UserController.php?action=back"><i class="fa-solid fa-arrow-left"></i>Home</a>
-        </div>
-        <input type="submit" value="Edit" class="submit">
+        <div class="btn-group">
+          <div class="back">
+            <a href="../Controllers/CityController.php?action=listCity"><i class="fa-solid fa-arrow-left"></i>Back</a>
+          </div>
+          <input type="submit" value="Edit" class="submit">
         </div>
     </div>
   </form>
+  </div>
 </body>
 
 <script>

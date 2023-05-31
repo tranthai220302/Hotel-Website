@@ -11,15 +11,6 @@ body {
   box-sizing: border-box;
 }
 
-
-.header {
-  background-color: #003580;
-  color: white;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
 .headerContainer {
   width: 100%;
   max-width: 1024px;
@@ -139,7 +130,7 @@ body {
     padding: 30px 0;
 
   }
-  .btn{
+  .btn-group{
     display: flex;
     margin: 10px;
   }
@@ -152,13 +143,28 @@ body {
     font-style: italic;
     margin-right: 200px;
   }
+
+  .back a {
+    color: #263760;
+  }
+
+  .back a:hover {
+    color: #C1B086;
+  }
   .submit{
     background-color: rgba(255,255,255,0.5);
-
+    color: #263760;
     height: 30px;
     margin-top: 25px;
     margin-right: 80px;
   }
+
+  .submit:hover {
+    cursor: pointer;
+    color: #C1B086;
+    background-color: #263760;
+  }
+
   .profile_main{
     display: flex;
     justify-content: space-between;
@@ -208,12 +214,7 @@ body {
     color: red;
     font-weight: bold;
   }
-  .user-profile {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px; */
-  }
+
   .profile_main{
     display: flex;
   }
@@ -236,14 +237,15 @@ body {
   
   input[type="submit"] {
     margin: 20px 0 0 20px;
-    padding: 10px ;
+    padding: 6px ;
     text-align: center;
+    vertical-align: middle;
     border-radius: 10px;
     font-weight: 600;
     margin-right: 80px;
   }
-  
-  input[type="submit"]:hover {
-    background-color: #3e8e41;
+
+  input:hover {
     cursor: pointer;
+    color: #C1B086;
   }
