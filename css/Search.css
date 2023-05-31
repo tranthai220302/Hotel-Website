@@ -368,7 +368,7 @@ body {
 
 .siTaxiOp {
   font-size: 12px;
-  background-color: #008009;
+  background-color: #263760;
   color: white;
   width: max-content;
   padding: 3px;
@@ -386,13 +386,13 @@ body {
 
 .siCancelOp{
   font-size: 12px;
-  color: #008009;
+  color: #263760;
   font-weight: bold;
 }
 
 .siCancelOpSubtitle{
   font-size: 12px;
-  color: #008009;
+  color: #263760;
 }
 
 .siDetails {

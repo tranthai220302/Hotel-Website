@@ -261,7 +261,7 @@ button:hover {
 }
 
 input {
-  width: 115%;
+  width: 100%;
   padding: 15px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   outline: none;
@@ -290,11 +290,11 @@ input {
   height: 100%;
 }
 
-.btn:hover {
+/* .btn:hover {
   color: #fcfc00;
   border: 2px solid #929246;
   cursor: pointer;
-}
+} */
 
 /*--------------book--------*/
 /*--------------about--------*/

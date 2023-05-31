@@ -5,7 +5,7 @@
   }
   .listSearch {
     flex: 1;
-    background-color: #febb02;
+    background-color: #027e848e !important;
     padding: 10px;
     border-radius: 10px;
     position: sticky;
@@ -17,7 +17,7 @@
   
   .lsTitle{
     font-size: 20px;
-    color: #555;
+    color: #263760 !important;
     margin-bottom: 10px;
   }
   
@@ -183,7 +183,11 @@
   }
   
   .hotelTitle {
-    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    color: rgb(38 55 96);
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+    font-size: 35px;
   }
   
   .hotelAddress {
@@ -206,11 +210,11 @@
   .hotelImages {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   
   .hotelImgWrapper {
-    width: 33%;
+    width: 32%;
   }
   
   .hotelImg {
@@ -339,7 +343,7 @@
     color: white;
     display: flex;
     justify-content: center;
-    position: relative;
+    position: fixed;
   }
   
   .headerContainer {
@@ -600,7 +604,7 @@
 
 .comment-form button {
   border-radius: 40px;
-  background-color: grey;
+  background-color: #263760;
   color: #fff;
   font-weight: bold;
   cursor: pointer;

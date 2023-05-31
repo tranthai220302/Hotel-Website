@@ -58,10 +58,11 @@
 		</div>
   </header>
   
+    <div class="top">
     <div class="hotelContainer">
-      <form action="../Controllers/RoomController.php?action=book&is=0" method="post">
+      <form action="../Controllers/RoomController.php?action=book&is=0" method="post" style="width: 30%">
       <div class="listSearch">
-        <h1 class="lsTitle">Search</h1>
+        <h1 class="lsTitle">Room Search</h1>
         <div class="lsItem">
           <label>City</label>
           <input type="text" name = 'city' value="<?php echo $arr['City']->getnameCity(); ?>"/>
@@ -104,7 +105,7 @@
       </form>
       <div class="hotelWrapper">
         <div class="back" style="display: flex; justify-content: space-between;">
-        <h1 class="hotelTitle"><?php echo $arr['Hotels']->getnameHotel(); ?></h1>
+        <h1 class="hotelTitle">Tìm phòng tại <?php echo $arr['Hotels']->getnameHotel(); ?></h1>
         <a href="../../Hotel-Website/Controllers/HotelController.php?action=search&id=<?php echo $_SESSION['id_city_search'] ?>&is=1" style="margin-top: 15px;"><i class="fa-solid fa-backward">  Back</i></a>
         </div>
         <div class="hotelAddress">
@@ -116,23 +117,24 @@
         <span class="hotelPriceHighlight">
           Book a stay over $114 at this property and get a free airport taxi
         </span>
-        <div class="hotelImages">
+        <div class="hotelImages" style = 'height: 50%;'>
           <?php
           foreach($arr['Rooms'] as $room)
           {
             echo "
-            <div class='hotelImgWrapper'>
+            <div class='hotelImgWrapper' style ='margin: 5px'>
             <img
               src = '../image/room/".$room->getImg()."'
               alt=''
               class='hotelImg'
+              style = 'height: 100%;'
             />
           </div>";
           }
           ?>
 
         </div>
-        <div class="hotelDetails">
+        <!-- <div class="hotelDetails">
           <div class="hotelDetailsTexts">
             <h1 class="hotelTitle">Stay in the heart of City</h1>
             <p class="hotelDesc">
@@ -140,9 +142,10 @@
             </p>
           </div>
 
-        </div>
+        </div> -->
       </div>
 
+    </div>
     </div>
     <script>
 
