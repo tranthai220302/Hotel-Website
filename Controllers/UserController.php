@@ -66,8 +66,25 @@
                     case 'editUser':
                         $this->editUsers();
                         break;
+                    case 'homeHotel':
+                        $this->homeHotel();
+                        break;
                 }
             }
+        }
+        public function homeHotel(){
+            $idUser = $_SESSION['user']['id'];
+            $hotel = $this->adminService->getHotelByUser($idUser);
+            $_SESSION['id_hotel'] = $hotel->getidHotel();
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $arr = $this->adminRoom->getListRoom($hotel->getidHotel(), $page);
+            $count = count($arr);
+            $n_review = $this->adminService->n_review($_SESSION['id_hotel']);
+            if($n_review!=0){
+                $n_review = count($n_review);
+            }
+            $city = $this->adminCity->getCityBy($hotel->getidCity());
+            include_once('../Views/Employee/home/index.php');
         }
         public function editUsers(){
             if($_SESSION['user']['isAdmin'] == 1){
@@ -191,7 +208,7 @@
                     include_once('../Views/QuanlyHotels.php');
                 }
                 else{
-                    if(!isset($_SESSION['is_loading']))
+                    if(!isset($_SESSION['is_loading']) && $_SESSION['user']['isAdmin'] == 0 && $_SESSION['user']['isHotel'] == 0)
                     {
                         include_once('../Views/home.php');
                     }else if($_SESSION['is_loading'] == 1){
@@ -253,7 +270,7 @@
         }
         public function Back()
         {
-            if($_SESSION['login'])
+            if($_SESSION['login'] && $_SESSION['user']['isAdmin'] == 0 && $_SESSION['user']['isHotel'] == 0)
             {
             include_once('../Views/home.php');
             }

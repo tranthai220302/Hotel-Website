@@ -50,7 +50,7 @@
             $search_option = $_POST['search'];
             $searc_Val = $_POST['val'];
             $arr = $this->adminService->getRoombyRequest($idHotel, $search_option, $searc_Val, $_SESSION['datestart'], $_SESSION['dateend'], $_SESSION['adult'], $_SESSION['children']);
-            include_once('../Views/bookRoom/Rooms.php');
+                include_once('../Views/bookRoom/Rooms.php');
         }
 
         public function getBookRoom()

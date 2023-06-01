@@ -47,9 +47,9 @@
 									<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
 								</ul>
 							</div></li>";
-						} else if($_SESSION['user']['isAdmin'] == 0){
+						} else if($_SESSION['user']['isAdmin'] == 0 && $_SESSION['user']['isHotel'] == 0){
 							echo "
-							<li> <a href='#home' class='nav-link'>Home</a> </li>
+							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=back' class='nav-link'>Home</a> </li>
 							<li> <a href='#about' class='nav-link'>About</a> </li>
 							<li> <a href='#room' class='nav-link'>Rooms</a> </li>
 							<li> <a href='#map' class='nav-link'>Map</a> </li>
@@ -64,6 +64,20 @@
 								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
 							</ul>
 						</div>";
+						}else if($_SESSION['user']['isHotel'] == 1){
+							echo "
+							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel' class='nav-link'>Home</a> </li>
+							<div class='user-menu'>
+							<div class='username'>
+							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+							</div>
+							<ul class='menu'>
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Quan ly khach san</a></li>
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>Danh sách khách hàng</a></li>
+								<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+							</ul>
+						  </div>";
 						}
 					?>
 				</ul>

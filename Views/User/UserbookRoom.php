@@ -24,8 +24,8 @@
 						if($_SESSION['user']['isAdmin'] == 1)
 						{
 							echo "
-							<li> <a href='../../Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
-							<li> <a href='../../Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
+							<li> <a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
+							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
 							<a href='../Controllers/CityController.php?action=listHotel'></a>
 							<li><div class='user-menu'>
 							<div class='username' >
@@ -38,11 +38,11 @@
 							</div></li>";
 						} else if($_SESSION['user']['isAdmin'] == 0){
 							echo "
-							<li> <a href='#home' class='nav-link'>Home</a> </li>
+							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=back' class='nav-link'>Home</a> </li>
 							<li> <a href='#about' class='nav-link'>About</a> </li>
 							<li> <a href='#room' class='nav-link'>Rooms</a> </li>
 							<li> <a href='#map' class='nav-link'>Map</a> </li>
-							<li><a href='../Controllers/CityController.php?action=listHotel'></a></li>
+							<li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listHotel'></a></li>
 							<div class='user-menu'>
 							<div class='username'>
 							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>

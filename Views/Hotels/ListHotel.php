@@ -41,7 +41,7 @@
 							</div></li>";
 						} else if($_SESSION['user']['isAdmin'] == 0){
 							echo "
-							<li> <a href='#home' class='nav-link'>Home</a> </li>
+							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=back' class='nav-link'>Home</a> </li>
 							<li> <a href='#about' class='nav-link'>About</a> </li>
 							<li> <a href='#room' class='nav-link'>Rooms</a> </li>
 							<li> <a href='#map' class='nav-link'>Map</a> </li>
@@ -299,15 +299,15 @@
 		}
 	</script>
 	<?php
-	// if(isset($arr['hotels']))
-	// {
-	// 	echo "<div class='pagination'>";
-	// 	for ($i = 1; $i <= $arr['numPage']; $i++) {
-	// 		$active = $i == $arr['page'] ? "active" : "";
-	// 		echo "<a href='../../../Hotel-Website/Controllers/HotelController.php?action=listHotel&id=".$_SESSION['id_city']."&page=$i' class='$active'>$i</a>";
-	// 	}
-	// 	echo "</div>";
-	// }
+	if(isset($arr['hotels']))
+	{
+		echo "<div class='pagination'>";
+		for ($i = 1; $i <= $arr['numPage']; $i++) {
+			$active = $i == $arr['page'] ? "active" : "";
+			echo "<a href='../../../Hotel-Website/Controllers/HotelController.php?action=listHotel&id=".$_SESSION['id_city']."&page=$i' class='$active'>$i</a>";
+		}
+		echo "</div>";
+	}
 	
 	?>
 </div>

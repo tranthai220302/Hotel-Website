@@ -212,7 +212,7 @@
           {
            
             echo "
-
+            <li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel' class='nav-link'>Home</a> </li>
             <div class='user-menu'>
             <div class='username'>
             <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>

@@ -113,23 +113,40 @@
             $result = mysqli_query($con, $sql);
             if($result)
             {
-                $sqlUser = "DELETE FROM user WHERE id = $idUser";
-                $resultUser = mysqli_query($con, $sqlUser);
-                if($resultUser){
-                    $sql = "UPDATE city
-                    SET NumHotels = NumHotels - 1
-                    WHERE IdCity = $idCity";
-                    $result = mysqli_query($con, $sql);
-                    if($result)
-                    {
-                        $sql = "DELETE FROM room WHERE idHotel = $idHotel";
+                echo "cc";
+                if($idUser){
+                    $sqlUser = "DELETE FROM user WHERE id = $idUser";
+                    $resultUser = mysqli_query($con, $sqlUser);
+                    if($resultUser){
+                        $sql = "UPDATE city
+                        SET NumHotels = NumHotels - 1
+                        WHERE IdCity = $idCity";
                         $result = mysqli_query($con, $sql);
                         if($result)
                         {
-                            return true;
+                            $sql = "DELETE FROM room WHERE idHotel = $idHotel";
+                            $result = mysqli_query($con, $sql);
+                            if($result)
+                            {
+                                return true;
+                            }
                         }
-                    }
-                }else return false;
+                    }else return false;
+                }else{
+                    $sql = "UPDATE city
+                        SET NumHotels = NumHotels - 1
+                        WHERE IdCity = $idCity";
+                        $result = mysqli_query($con, $sql);
+                        if($result)
+                        {
+                            $sql = "DELETE FROM room WHERE idHotel = $idHotel";
+                            $result = mysqli_query($con, $sql);
+                            if($result)
+                            {
+                                return true;
+                            }
+                        }
+                }
             }else return false;
          }
 

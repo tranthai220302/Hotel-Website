@@ -86,12 +86,12 @@
                foreach($arr['hotels'] as $hotel){
                 if($hotel->getIdUser()){
                     $users[$hotel->getidHotel()] = $this->adminUser->getUser($hotel->getIdUser());
-                    
                 }
                }
-               
                include_once('../Views/Hotels/ListHotel.php');
                
+            }else{
+                echo "cc";
             }
         }
         public function addHotel()
@@ -124,8 +124,10 @@
                 if($DeleteHotel)
                 {
                     $id = $_SESSION['id_city'];
-                    $link = "../Controllers/HotelController.php?action=listHotel&id=$id";
+                    $link = "../Controllers/HotelController.php?action=listHotel&id=$id&page=1";
                     header("Location: $link");
+                }else{
+                    echo 'cc';
                 }
             }
         }

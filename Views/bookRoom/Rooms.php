@@ -37,7 +37,7 @@ $i = 0;
 							</div></li>";
 						} else if($_SESSION['user']['isAdmin'] == 0){
 							echo "
-							<li> <a href='#home' class='nav-link'>Home</a> </li>
+							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=back' class='nav-link'>Home</a> </li>
 							<li> <a href='#about' class='nav-link'>About</a> </li>
 							<li> <a href='#room' class='nav-link'>Rooms</a> </li>
 							<li> <a href='#map' class='nav-link'>Map</a> </li>
