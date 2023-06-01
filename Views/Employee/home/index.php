@@ -3,7 +3,8 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Luxe &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+	<link rel="icon" href="../../../image/icon.png">
+	<title>Sochi</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -31,6 +32,7 @@
 	<link rel="stylesheet" href="../../../../Hotel-Website/Views/Employee/home/css/cs-skin-border.css">
 
 	<!-- Themify Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 	<link rel="stylesheet" href="../../../../Hotel-Website/Views/Employee/home/css/themify-icons.css">
 	<!-- Flat Icon -->
 	<link rel="stylesheet" href="../../../../Hotel-Website/Views/Employee/home/css/flaticon.css">
@@ -40,9 +42,10 @@
 	<link rel="stylesheet" href="../../../../Hotel-Website/Views/Employee/home/css/flexslider.css">
 	
 	<!-- Style -->
-	<link rel="stylesheet" href="../../../../Hotel-Website/Views/Employee/home/css/style.css">
-	
+	<!-- <link rel="stylesheet" href="../../../../Hotel-Website/Views/Employee/home/css/style.css"> -->
+	<link rel="stylesheet" href="../../../../Hotel-Website/Views/Employee/home/css/style1.css">
 	<link rel="stylesheet" href="../../../../Hotel-Website/css/home1.css">
+	<link rel="stylesheet" href="../../../../Hotel-Website/css/home.css">
 
 	<!-- Modernizr JS -->
 	<script src="../../../../Hotel-Website/Views/Employee/home/js/modernizr-2.6.2.min.js"></script>
@@ -53,89 +56,115 @@
 
 </head>
 <style>
-	.header {
-  background-color: #003580;
-  color: white;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.headerContainer {
+	/*--------------header--------*/
+header {
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 1024px;
-  margin: 20px 0px 100px 0px;
+  background-color: #263760;
+  border-bottom: 0.5px solid #f8f8f9;
+  z-index: 5;
 }
 
-.headerContainer.listMode {
-  margin: 20px 0px 0px 0px;
+.logo img {
+  width: 120px;
 }
 
-.headerList {
+header nav {
   display: flex;
-  gap: 40px;
-  margin-bottom: 50px;
-}
-
-.headerListItem {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  padding: 10px 0;
 }
 
-.headerListItem.active {
-  border: 1px solid white;
-  padding: 10px;
-  border-radius: 20px;
+.hambuger {
+  display: none;
 }
 
-.headerDesc {
-  margin: 20px 0px;
-}
-
-.headerBtn {
-  background-color: #0071c2;
-  color: white;
-  font-weight: 500;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.headerSearch {
-  height: 30px;
-  background-color: white;
-  border: 3px solid #febb02;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 10px 0px;
-  border-radius: 5px;
-  position: absolute;
-  bottom: -25px;
+.slide{
   width: 100%;
-  max-width: 1024px;
 }
 
-.headerIcon {
-  color: lightgray;
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
 }
 
-.headerSearchItem {
+header ul {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
 }
 
-.headerSearchInput {
-  border: none;
-  outline: none;
+header ul li {
+  margin-left: 3rem;
 }
 
-.headerSearchText {
-  color: lightgray;
-  cursor: pointer;
+header ul li a {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: white;
+  transition: 0.5s;
+  text-decoration: none;
 }
+
+header ul li a:hover {
+  color: #C1B086;
+}
+
+@media only screen and (max-width: 768px) {
+  header ul {
+    display: block;
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.5s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    z-index: 20;
+  }
+
+  header ul.active {
+    left: 0%;
+  }
+
+  header ul li {
+    margin: 2.5rem 0;
+  }
+
+  header ul li a {
+    color: black;
+  }
+
+  .hambuger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hambuger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hambuger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hambuger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/*--------------header--------*/
 	.navbar{
   height: 50px;
   background-color: #003580;
@@ -163,232 +192,94 @@
   cursor: pointer;
   color: #003580;
 }
+.title{
+  text-align: center;
+  margin-top: 20px;
+  color: rgb(38 55 96);
+  text-shadow: 1px 1px 2px rgb(255, 255, 255);
+  font-size: 35px;
+  }
 </style>
 <body>
-	<div class="img" style="background-color: #003580;">
-	<div class="navbar">
-		<div class="navContainer">
-		<a href="../../../Hotel-Website/Controllers/UserController.php?action=home2"><span class="logo" style="color: black;">Sochi</span></a>
-
-		  <?php
-          if($_SESSION['user']['isHotel'] == 1)
-          {
-           
-            echo "
-
-            <div class='user-menu'>
-            <div class='username'>
-            <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
-            </div>
-            <ul class='menu'>
-                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Quan ly khach san</a></li>
-                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>Danh sách khách hàng</a></li>
-                <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
-                <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
-            </ul>
-          </div>";
-          }
-      ?>
-		</div>
-	  </div>
-		<div class="header">
-			<div class= "headerContainer listMode">
-			  <div class="headerList">
-				<div class="headerListItem active">
-				  <span>Stays</span>
-				</div>
-				<div class="headerListItem">
-				  <span>Flights</span>
-				</div>
-				<div class="headerListItem">
-				  <span>Car rentals</span>
-				</div>
-				<div class="headerListItem">
-				  <span>Attractions</span>
-				</div>
-				<div class="headerListItem">
-				  <span>Airport taxis</span>
-				</div>
-			  </div>
-		
-				  <p class="headerDesc">
-					
-				  </p>         
-				</div>
-		</div>
-	</div>
-
-	<div id="featured-hotel" class="fh5co-bg-color">
+<header class="header" id="navigation-menu">
 		<div class="container">
-			
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title text-center">
-						<h2>WELCOME HOTEL <?php
-							echo $hotel->getnameHotel();
-						?>
-						
-						</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="feature-full-1col">
-					<div class="image" style="background-image: url(<?php echo $city->getImg() ?>);">
-						<div class="descrip text-center">
-							<p><small>Welcome</small></p>
-						</div>
-					</div>
-					<div class="desc">
-						<h3><?php echo $city->getnameCity() ?></h3>
-						<p><?php echo $city->getdescription() ?></p>
-						<p><a href="#" class="btn btn-primary btn-luxe-primary">Read More <i class="ti-angle-right"></i></a></p>
-					</div>
-				</div>
-
-				<div class="feature-full-2col">
-					<?php
-					$count = 0;
-					foreach($arr['rooms'] as $room)
+			<nav>
+				<a href="../../../Hotel-Website/Controllers/UserController.php?action=home2" class="logo"> <img src="../image/home/logo.png" alt=""> </a>
+				<ul class="nav-menu">
+				<?php
+					if($_SESSION['user']['isHotel'] == 1)
 					{
-						$isbook = $room->getIsbook() == 0 ? "Phòng trống" : "Đã có người đặt";
-						echo "
-						<div class='f-hotel'>
-						<div class='image' style='background-image: url(../../../Hotel-Website/image/room/".$room->getImg().");'>
-							<div class='descrip text-center'>
-								<p><small>For as low as</small><span>".$room->getPrice()."/night</span></p>
-							</div>
-						</div>
-						<div class='desc'>
-							<h3>".$room->getnameRoom()."</h3>
-							<p>".$room->getdescription()."</p>
-						</div>
-						</div>
-						";
-					    $count++;
-						if ($count == 2) {
-							break;
-						}
-
-					}
-					?>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<div id="hotel-facilities">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title text-center">
-						<h2>Hotel Facilities</h2>
-					</div>
-				</div>
-			</div>
-
-			<div id="tabs">
-				<nav class="tabs-nav">
-					<a href="#" class="active" data-tab="tab1">
-						<i class="flaticon-restaurant icon"></i>
-						<span>Restaurant</span>
-					</a>
-					<a href="#" data-tab="tab2">
-						<i class="flaticon-cup icon"></i>
-						<span>Bar</span>
-					</a>
-					<a href="#" data-tab="tab3">
 					
-						<i class="flaticon-car icon"></i>
-						<span>Pick-up</span>
-					</a>
-					<a href="#" data-tab="tab4">
-						
-						<i class="flaticon-swimming icon"></i>
-						<span>Swimming Pool</span>
-					</a>
-					<a href="#" data-tab="tab5">
-						
-						<i class="flaticon-massage icon"></i>
-						<span>Spa</span>
-					</a>
-					<a href="#" data-tab="tab6">
-						
-						<i class="flaticon-bicycle icon"></i>
-						<span>Gym</span>
-					</a>
-				</nav>
-
-			</div>
+						echo "
+						<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel'>Home</a></li>
+						<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Hotel Manage</a></li>
+						<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>List User</a></li>
+						<div class='user-menu'>
+						<div class='username'>
+						<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+						</div>
+						<ul class='menu'>
+							<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+							<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+						</ul>
+					</div>";
+					}
+				?>
+				</ul>
+			</nav>
 		</div>
-	</div>
+  </header>
 
+  <section class="home" id="home">
+    <div class="head_container">
+      <div class="box">
+        <div class="text">
+          <h1>Sochi xin chào</h1>
+          <p>Mỗi lần đi du lịch ở Sapa tôi và gia đình đều ở khách sạn này. Khách sạn tọa lạc tại đỉnh núi. Khách sạn rất rộng. Màu chủ đạo là màu trắng. Vì là khách sạn tại vùng núi nên không gian ở đây được thiết kế rất hòa hợp với thiên nhiên. Sân của khách sạn có nhiều loại hoa khiến khách du lịch cảm thấy rất thu hút. Khi ở tại khách sạn, Khách sạn có phần sảnh khá rộng. </p>
+          <button style="margin-bottom: 20px;">MORE INFO</button>
+        </div>
+      </div>
+      <div class="image">
+        <img src="../image/home/home1.jpg" class="slide">
+      </div>
+      <div class="image_item">
 
+      </div>
+    </div>
+  </section>
 
-	<footer id="footer" class="fh5co-bg-color">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="copyright">
-						<p><small>&copy; 2016 Free HTML5 Template. <br> All Rights Reserved. <br>
-						Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> <br> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-3">
-							<h3>Company</h3>
-							<ul class="link">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Hotels</a></li>
-								<li><a href="#">Customer Care</a></li>
-								<li><a href="#">Contact Us</a></li>
-							</ul>
-						</div>
-						<div class="col-md-3">
-							<h3>Our Facilities</h3>
-							<ul class="link">
-								<li><a href="#">Resturant</a></li>
-								<li><a href="#">Bars</a></li>
-								<li><a href="#">Pick-up</a></li>
-								<li><a href="#">Swimming Pool</a></li>
-								<li><a href="#">Spa</a></li>
-								<li><a href="#">Gym</a></li>
-							</ul>
-						</div>
-						<div class="col-md-6">
-							<h3>Subscribe</h3>
-							<p>Sed cursus ut nibh in semper. Mauris varius et magna in fermentum. </p>
-							<form action="#" id="form-subscribe">
-								<div class="form-field">
-									<input type="email" placeholder="Email Address" id="email">
-									<input type="submit" id="submit" value="Send">
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<ul class="social-icons">
-						<li>
-							<a href="#"><i class="icon-twitter-with-circle"></i></a>
-							<a href="#"><i class="icon-facebook-with-circle"></i></a>
-							<a href="#"><i class="icon-instagram-with-circle"></i></a>
-							<a href="#"><i class="icon-linkedin-with-circle"></i></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
+  <section class="about top" id="about">
+    <div class="container flex">
+      <div class="left">
+        <div class="img">
+          <img src="../image/home/a1.jpg" alt="" class="image1">
+          <img src="../image/home/a2.jpg" alt="" class="image2">
+        </div>
+      </div>
+      <div class="right">
+        <div class="heading">
+          <h5>RAISING COMFOMRT TO THE HIGHEST LEVEL</h5>
+          <h2>Welcome to Sochi</h2>
+          <p>Được thành lập vào năm 2023 ở Việt Nam, Sochi đã phát triển từ một nhóm khởi nghiệp nhỏ ở Việt Nam để trở thành một trong các công ty hàng đầu thế giới cung cấp các dịch vụ du lịch dựa trên nền tảng số hóa. Sứ mệnh của Sochi là giúp mọi người trải nghiệm thế giới dễ dàng hơn.</p>
+          <p>Bằng cách đầu tư vào công nghệ giúp loại bỏ những phiền toái khi du lịch, Sochi kết nối hàng triệu du khách với các trải nghiệm đáng nhớ, nhiều lựa chọn vận chuyển và các chỗ nghỉ tuyệt vời - từ dạng nhà ở cho đến khách sạn và nhiều hơn nữa. Là một trong những thị trường du lịch lớn nhất thế giới cho cả những thương hiệu lớn và doanh nghiệp ở mọi quy mô, Sochi giúp các chỗ nghỉ trên khắp thế giới kết nối với khách hàng toàn cầu và phát triển doanh nghiệp của họ.</p>
 
-	</div>
-	<!-- END fh5co-page -->
+        </div>
+      </div>
+    </div>
+  </section>
 
-	</div>
-	<!-- END fh5co-wrapper -->
+<!-- footer -->
+  <footer>
+    <div class="footer">
+      <div class="social">
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-square-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-square-twitter"></i>
+      </div>
+      <p>Copyright <i class="fa-regular fa-copyright"></i> by Sochi</p>
+    </div>
+  </footer>
 	
 	<!-- Javascripts -->
 	<script src="../../../../Hotel-Website/Views/Employee/home/js/jquery-2.1.4.min.js"></script>

@@ -200,8 +200,8 @@
         </div>
       </div>
     </div>
-  <!-- </section>
-  gioi thieu -->
+  </section>
+  <!-- gioi thieu  -->
   <!-- danh sach thanh pho -->
   <section class="room top" id="room">
     <div class="container">

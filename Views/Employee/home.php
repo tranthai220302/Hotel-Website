@@ -66,18 +66,18 @@
 						</div>";
 						}else if($_SESSION['user']['isHotel'] == 1){
 							echo "
-							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel' class='nav-link'>Home</a> </li>
-							<div class='user-menu'>
-							<div class='username'>
-							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
-							</div>
-							<ul class='menu'>
-								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Quan ly khach san</a></li>
-								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>Danh sách khách hàng</a></li>
-								<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
-								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
-							</ul>
-						  </div>";
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel'>Home</a></li>
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Hotel Manage</a></li>
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>List User</a></li>
+								<div class='user-menu'>
+								<div class='username'>
+								<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+								</div>
+								<ul class='menu'>
+									<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+									<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+								</ul>
+							</div>";
 						}
 					?>
 				</ul>
@@ -113,12 +113,12 @@
 		<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description' required></textarea>
 		</div>
 		<div class='form-group'>
-			<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Anh</label>
+			<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn ảnh</label>
 			<input class='form-control' type='file' id='formFile' name='imgRoom' accept='image/*' required>
 		</div>
 		<div class='dropdown mt-3' style='margin-top: 30px;'>
 			
-		<button type='submit' class='btn btn-success'>Success</button>
+		<button type='submit' class='btn btn-success'>Add</button>
 		</form>
 		</div>
 	</div>
@@ -198,7 +198,7 @@
 							<input class='form-control' type='file' id='formFile' name='imgRoom' accept='image/*' >
 						</div>
 							
-						<button type='submit' class='btn btn-success' style='margin-top: 20px;'>Add</button>
+						<button type='submit' class='btn btn-success' style='margin-top: 20px;'>Edit</button>
 						</form>
 					</div>
 					</div>
