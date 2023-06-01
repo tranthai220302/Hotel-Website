@@ -301,7 +301,8 @@
                         'email' =>$User_edit->getEmail(),
                         'isAdmin'=> $User_edit->getIsAdmin(),
                         'firstName'=>$User_edit->getFirstName(),
-                        'lastName'=>$User_edit->getLastName()
+                        'lastName'=>$User_edit->getLastName(),
+                        'isHotel'=>$User_edit->getIsHotel()
                     );
                     include_once('../Views/User/ThongtinUser.php');
                 }
