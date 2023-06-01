@@ -83,18 +83,18 @@
 						</div>";
           }else if($_SESSION['user']['isHotel'] == 1){
             echo "
-            <li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel' class='nav-link'>Home</a> </li>
-            <div class='user-menu'>
-            <div class='username'>
-            <img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
-            </div>
-            <ul class='menu'>
-              <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Quan ly khach san</a></li>
-              <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>Danh sách khách hàng</a></li>
-              <li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin người dùng</a></li>
-              <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
-            </ul>
-            </div>";
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel'>Home</a></li>
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Hotel Manage</a></li>
+								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>List User</a></li>
+								<div class='user-menu'>
+								<div class='username'>
+								<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+								</div>
+								<ul class='menu'>
+									<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+									<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+								</ul>
+							</div>";
           }
 					?>
 				</ul>
