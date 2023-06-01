@@ -29,7 +29,7 @@ table {
   }
   
   td button {
-    background-color: #4CAF50;
+    background-color: #263760;
     color: white;
     padding: 10px;
     border: none;
@@ -132,12 +132,13 @@ table {
   }
   
   form button {
-    background-color: #4CAF50;
+    background-color: #263760;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 18px;
     transition: background-color 0.3s ease;
   }
   
@@ -154,7 +155,7 @@ table {
     transition: background-color 0.3s ease;
   }
   .link{
-    background-color: #4CAF50;
+    background-color: #263760;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -163,12 +164,27 @@ table {
     transition: background-color 0.3s ease;
     text-decoration: none;
     position: relative;
-    left: 517px;
+    left: 400px;
     bottom: 30px;
   }
+
+  /* form button {
+      background-color: #263760;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      position: relative;
+      bottom: 30px;
+    } */
+
   .link1{
-    background-color: #4CAF50;
+    background-color: #263760;
     color: white;
+    font-size: 18px !important;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -178,7 +194,7 @@ table {
     position: relative;
   }
 
-  button:hover {
+  button,.link:hover {
     background-color: #3e8e41;
   }
   .out{

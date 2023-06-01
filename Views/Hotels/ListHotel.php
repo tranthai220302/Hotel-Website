@@ -27,8 +27,8 @@
 						if($_SESSION['user']['isAdmin'] == 1)
 						{
 							echo "
-							<li> <a href='../Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
-							<li> <a href='../Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
+							<li> <a href='../Controllers/CityController.php?action=listCity' class='nav-lin'>Hotel Manage</a> </li>
+							<li> <a href='../Controllers/UserController.php?action=listUser' class='nav-lin'>User Manage</a> </li>
 							<a href='../Controllers/CityController.php?action=listHotel'></a>
 							<li><div class='user-menu'>
 							<div class='username' >
@@ -97,7 +97,7 @@
 			</div>
 			<div class='dropdown mt-3' style='margin-top: 30px;'>
 				
-			<button type='submit' class='btn btn-success'>Success</button>
+			<button type='submit' class='btn btn-success'>Add</button>
 			</form>
 			</div>
 		</div>
@@ -273,11 +273,11 @@
 					<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description'  value = '".$hotel->getdescription()."'>".$hotel->getdescription()."</textarea>
 					</div>
 					<div class='form-group'>
-						<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Anh</label>
+						<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn ảnh</label>
 						<input class='form-control' type='file' id='formFile' name='imgHotel' accept='image/*' >
 					</div>
 						
-					<button type='submit' class='btn btn-success'>Success</button>
+					<button type='submit' class='btn btn-success' style='margin-top: 20px'>Edit</button>
 					</form>
 				</div>
 				</div>

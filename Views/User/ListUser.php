@@ -147,7 +147,7 @@
                       </button>
                       <div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample".$User->getId()."' aria-labelledby='offcanvasExampleLabel'>
                         <div class='offcanvas-header'>
-                          <h5 class='offcanvas-title' id='offcanvasExampleLabel'>Detail User</h5>
+                          <h5 class='offcanvas-title' id='offcanvasExampleLabel'>Edit User</h5>
                           <button type='button' class='btn-close text-reset' data-bs-dismiss='offcanvas' aria-label='Close'></button>
                         </div>
                         <div class='offcanvas-body'>
@@ -155,7 +155,7 @@
                         <form action='../../../Hotel-Website/Controllers/UserController.php?action=editUser&id=".$User->getId()."' method='post' enctype='multipart/form-data'>
             
                         <div class='form-group'>
-                        <img class = 'img' src='../../../Hotel-Website/image/user/".$User->getImg()."'>
+                        <img class = 'img img-edit' src='../../../Hotel-Website/image/user/".$User->getImg()."'>
                       </div>
                         <div class='form-group'>
                           <label class='col-form-label' for='inputDefault' >First Name</label>
@@ -194,22 +194,8 @@
 			<!-- Thêm các dòng khác tương tự để hiển thị thông tin của các user khác -->
 		</tbody>
 	</table>
-<<<<<<< HEAD
-    <?php
-	if(isset($listUser['users']))
-	{
-		echo "<div class='pagination'>";
-		for ($i = 1; $i < $listUser['numPage']; $i++) {
-			$active = $i == $listUser['page'] ? "active" : "";
-			echo "<a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser&id=&page=$i' class='$active'>$i</a>";
-		}
-		echo "</div>";
-	}
-	?>
-=======
       
 		</div>
 	  </div>
->>>>>>> linh
 </body>
 </html>

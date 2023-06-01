@@ -39,14 +39,14 @@
     text-decoration: none;
     color: #333;
     padding: 10px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     display: inline-block;
     border-radius: 50%;
     transition: background-color 0.2s ease;
   }
   
   .username:hover {
-    background-color: #e5e5e5;
+    /* background-color: #e5e5e5; */
     cursor:pointer;
   }
   

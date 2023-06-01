@@ -87,6 +87,7 @@ header ul li a {
   font-weight: 400;
   color: white;
   transition: 0.5s;
+  text-decoration: none;
 }
 
 header ul li a:hover {

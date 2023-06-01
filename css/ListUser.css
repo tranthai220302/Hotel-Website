@@ -315,3 +315,7 @@ color: rgb(38 55 96);
 text-shadow: 1px 1px 2px rgb(255, 255, 255);
 font-size: 35px;
 }
+
+.img-edit {
+  width: 100%;
+}
