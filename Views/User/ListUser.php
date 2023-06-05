@@ -67,7 +67,15 @@
 			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		</div>
 		<div class="offcanvas-body">
-			<form action='../../../Hotel-Website/Controllers/RoomController.php?action=addRoom' method='post' enctype='multipart/form-data'>
+			<form action='../../../Hotel-Website/Controllers/UserController.php?action=createUser' method='post' enctype='multipart/form-data'>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' >User name</label>
+				<input type='text' class='form-control' placeholder='User name' id='inputDefault' name = 'username' required>
+			</div>
+			<div class='form-group'>
+				<label class='col-form-label' for='inputDefault' >Password</label>
+				<input type='text' class='form-control' placeholder='Password' id='inputDefault' name = 'password' required>
+			</div>
 			<div class='form-group'>
 				<label class='col-form-label' for='inputDefault' >First Name</label>
 				<input type='text' class='form-control' placeholder='First Name' id='inputDefault' name = 'firstname' required>
@@ -82,7 +90,7 @@
 			</div>
 			<div class='form-group'>
 				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Phone Number</label>
-				<input type='text' class='form-control' placeholder='Phone Number' id='inputDefault' name = 'phone-number' required>
+				<input type='text' class='form-control' placeholder='Phone Number' id='inputDefault' name = 'Numberphone' required>
 			</div>
 			<div class='form-group'>
 				<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Address</label>
@@ -90,7 +98,7 @@
 			</div>
 			<div class='form-group'>
 				<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Ảnh</label>
-				<input class='form-control' type='file' id='formFile' name='imgUser' accept='image/*' required>
+				<input class='form-control' type='file' id='formFile' name='Avatar' accept='image/*' required>
 			</div>
 			<div class='dropdown mt-3' style='margin-top: 30px;'>
 				
@@ -116,7 +124,7 @@
 				<th>Phone Number</th>
 				<th>Address</th>
 				<th>Booked Rooms</th>
-        <th>Update User</th>
+        <th>Delete User</th>
         <th>Edit User</th>
 			</tr>
 		</thead>

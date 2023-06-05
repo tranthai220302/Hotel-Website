@@ -147,9 +147,20 @@
               }
           ?>
           </div>
-
+          
         </div>
-
+        
       </div>
+      <?php
+            if(isset($arr['hotels']))
+            {
+              echo "<div class='pagination'>";
+              for ($i = 1; $i <= $arr['numPage']; $i++) {
+                $active = $i == $arr['page'] ? "active" : "";
+                echo "<a href='../../../Hotel-Website/Controllers/HotelController.php?action=search&id=".$_SESSION['id_city_search']."&page=$i&is=1' class='$active'>$i</a>";
+              }
+              echo "</div>";
+            }
+            ?>
 </body>
 </html>

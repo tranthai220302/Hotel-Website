@@ -189,6 +189,14 @@
 							<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'Price'  value = '".$room->getPrice()."'>
 						</div>
 						<div class='form-group'>
+						<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Adults</label>
+						<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'adults'  value = '".$room->getAdult()."'>
+						</div>
+						<div class='form-group'>
+							<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Children</label>
+							<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'childrens'  value = '".$room->getChildren()."'>
+						</div>
+						<div class='form-group'>
 						<label for='exampleTextarea' style='margin-top: 30px;'>Description</label>
 						<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description'  >".$room->getdescription()."</textarea>
 						</div>
@@ -249,17 +257,67 @@
 			
 					";
 					if($room->getIsbook() == 0){
-					echo "
+						echo "
 						<div class = 'ed'>
-						<a class = '' href='../../../Hotel-Website/Controllers/RoomController.php?action=delete&id=".$room->getidRoom()."'></a>
-						<a class = '' href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoom&id=".$room->getidRoom()."'></a>
+						<a style = 'margin-right: 40px;margin-left: 40px;'  class='btn btn-primary' data-bs-toggle='offcanvas' href='../../../Hotel-Website/Controllers/RoomController.php?action=delete&id=".$room->getidRoom()."' role='button' aria-controls='offcanvasExample' onclick='return confirmDelete();'>
+						Delete
+					  </a>
+						<button class='btn btn-primary' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample".$room->getidRoom()."' aria-controls='offcanvasExample".$room->getidRoom()."'>
+						Edit
+					</button>
+					<div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample".$room->getidRoom()."' aria-labelledby='offcanvasExampleLabel'>
+						<div class='offcanvas-header'>
+						<h5 class='offcanvas-title' id='offcanvasExampleLabel'>Edit Room</h5>
+						<button type='button' class='btn-close text-reset' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+					</div>
+					<div class='offcanvas-body'>
+						<form action='../../../Hotel-Website/Controllers/RoomController.php?action=editRoom&id=".$room->getidRoom()."' method='post' enctype='multipart/form-data'>
+
+						<div class='form-group'>
+						<img class = 'img' src='../../../Hotel-Website/image/room/".$room->getImg()."'>
+					</div>
+						<div class='form-group'>
+							<label class='col-form-label' for='inputDefault' >Name Hotel</label>
+							<input type='text' class='form-control' placeholder='Name Hotel' id='inputDefault' name = 'nameRoom'  value = '".$room->getnameRoom()."'>
+						</div>
+						<div class='form-group'>
+							<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Price</label>
+							<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'Price'  value = '".$room->getPrice()."'>
+						</div>
+						<div class='form-group'>
+						<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Adults</label>
+						<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'adults'  value = '".$room->getAdult()."'>
+						</div>
+						<div class='form-group'>
+							<label class='col-form-label' for='inputDefault' style='margin-top: 30px;'>Children</label>
+							<input type='text' class='form-control' placeholder='Địa điểm' id='inputDefault' name = 'childrens'  value = '".$room->getChildren()."'>
+						</div>
+						<div class='form-group'>
+						<label for='exampleTextarea' style='margin-top: 30px;'>Description</label>
+						<textarea class='form-control' id='exampleTextarea' rows='3' name = 'description'  >".$room->getdescription()."</textarea>
+						</div>
+
+						<div class='form-group'>
+							<label for='formFile' class='form-label' style='margin-top: 30px;'>Chọn Ảnh</label>
+							<input class='form-control' type='file' id='formFile' name='imgRoom' accept='image/*' >
+						</div>
+							
+						<button type='submit' class='btn btn-success' style='margin-top: 20px;'>Edit</button>
+						</form>
+					</div>
+					</div>
 						</div>
 						</div>
 					";
 					}else{
 						echo "
 						<div class = 'ed'>
-						
+						<a style = 'margin-right: 40px;margin-left: 40px;' class='btn btn-warning' data-bs-toggle='offcanvas' href='#' role='button' aria-controls='offcanvasExample' '>
+						Delete
+					  </a>
+						<button class='btn btn-warning' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample".$room->getidRoom()."' aria-controls='offcanvasExample".$room->getidRoom()."'>
+						Edit
+					</button>
 						</div>
 						</div>
 					";

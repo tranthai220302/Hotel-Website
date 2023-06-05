@@ -90,8 +90,8 @@ $i = 0;
       <tr>
         <th>Tên phòng</th>
         <th>Giá</th>
-        <th>Các lựa chọn</th>
-        <th></th>
+        <th style="width: 200px";>Các lựa chọn</th>
+        <th style="width: 150px;">Đặt phòng</th>
       </tr>
       <img src="../../../Hotel-Website/image/room/" alt="">
     </thead>

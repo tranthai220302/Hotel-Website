@@ -105,7 +105,7 @@
 				<?php
 				foreach($citys as $city)
 				{
-					echo "
+					echo "`
 					<div class='city'>
 					<a href='../../../Hotel-Website/Controllers/HotelController.php?action=listHotel&id=".$city->getidCity()."&page=1'>
 						<img class = 'img_city' src='".$city->getImg()."' alt='Hà Nội'>

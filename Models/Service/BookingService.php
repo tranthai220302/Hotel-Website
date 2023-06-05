@@ -8,7 +8,23 @@
         public function n_review(){
             
         }
-
+        public function huyPhongService($idRoom, $Date_end){
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            $sql_room = "UPDATE room SET isbook = isbook - 1 WHERE idRoom = $idRoom";
+            $result_room = mysqli_query($con, $sql_room);
+            if($result_room)
+            {
+                $sql = "DELETE FROM booking WHERE idRoom = $idRoom AND Date_end = STR_TO_DATE('$Date_end', '%Y-%m-%d')";
+                $result = mysqli_query($con, $sql);
+                if($result){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            return false;
+        }
         public function bookingService($idRoom, $idUser,$startDate, $endDate, $Adults, $Chilrens){
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");

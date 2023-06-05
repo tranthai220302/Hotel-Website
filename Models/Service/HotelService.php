@@ -211,9 +211,16 @@
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
             include_once('../Models/Entity/ExitRoom.php');
-            $sql = "UPDATE hotels
+            $sql = '';
+            if(!$imgHotel){
+                $sql = "UPDATE hotels
+            SET nameHotel = '$nameHotel', Description = '$description', numStart = '$nummStar'
+            WHERE idHotel = $idHotel";
+            }else{
+                $sql = "UPDATE hotels
             SET nameHotel = '$nameHotel', Description = '$description', numStart = '$nummStar', imgHotel = '$imgHotel'
             WHERE idHotel = $idHotel";
+            }
             $result = mysqli_query($con, $sql);
             if($result)
             {

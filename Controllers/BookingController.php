@@ -14,6 +14,24 @@
                 switch($action){
                     case 'bookRoom':
                         $this->bookRoom();
+                        break;
+                    case 'huyphong':
+                        $this->huyPhong();
+                        break;
+                }
+            }
+        }
+        public function huyPhong(){
+            if($_SESSION['login']){
+                $Date_end = $_GET['date_end'];
+                $idRoom = $_GET['id'];
+                $isHuy = $this->adminService->huyPhongService($idRoom, $Date_end);
+                if($isHuy){
+                    $id= $_SESSION['user']['id'];
+                    $link = "../Controllers/RoomController.php?action=getRoombyUser&id=$id";
+                    header("Location: $link");
+                }else{
+                    echo "loi";
                 }
             }
         }

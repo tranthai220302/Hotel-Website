@@ -179,7 +179,48 @@
             // Đóng kết nối
             mysqli_close($con);
         }
-
+        public function createUser($username, $password, $email, $address, $numberPhone, $imge, $firsName, $lastName){
+            $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
+            mysqli_select_db($con,"quanlyks");
+            $err = array();
+            $sql="SELECT *FROM user WHERE username = '".$username."'";
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_num_rows($result);
+            if(strlen($password) < 8)
+            {
+                $err['password'] = "Mật khẩu phải lớn hơn 8 chữ số";
+            }
+            if($row > 0)
+            {
+                $err['username'] = 'Tài khoản này đã tồn tại';
+            }else{
+                $sql="SELECT *FROM user WHERE email = '".$email."'";
+                $result = mysqli_query($con, $sql);
+                $row = mysqli_num_rows($result);
+                if($row > 0)
+                {
+                    $err['email'] = "Email này đã tồn tại";
+                }else{
+                    $sql = "INSERT INTO user (username, password, email, address, phoneNumber, img, firstName, lastName)
+                    VALUES ('$username', '$password', '$email', '$address', '$numberPhone', '$imge', '$firsName', '$lastName')";
+                    $result = mysqli_query($con, $sql);
+                    if($result)
+                    {
+                        $user_id = mysqli_insert_id($con);
+                        $sql = "SELECT *from user where id = $user_id";
+                        $result = mysqli_query($con, $sql);
+                        $row1 = mysqli_num_rows($result);
+                        $row = mysqli_fetch_assoc($result);
+                        if($row1 > 0)
+                        {
+                            $User_login = new User($row['id'], $row['username'], $row['password'], $row['email'], $row['isAdmin'], $row['address'], $row['phoneNumber'], $row['img'], $row['firstName'], $row['lastName'], $row['numberRoom'],  $row['isHotel']);
+                            return $User_login;
+                        }
+                    }
+                }
+            }
+            return $err;
+        }
         public function register($username, $password, $confirmpasswordd, $email, $address, $numberPhone, $imge, $firsName, $lastName)
         {
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");

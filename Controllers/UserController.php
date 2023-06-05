@@ -69,7 +69,37 @@
                     case 'homeHotel':
                         $this->homeHotel();
                         break;
+                    case 'createUser':
+                        $this->createUser();
+                        break;
                 }
+            }
+        }
+        public function createUser(){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+            $address = $_POST['address'];
+            $numberPhone = $_POST['Numberphone'];
+            $lastName = $_POST['lastname'];
+            $firstName = $_POST['firstname'];
+            $imge = $_FILES['Avatar']['name'];
+            $User_login = $this->adminService->createUser($username, $password,  $email, $address, $numberPhone, $imge, $firstName, $lastName);
+            if(is_array($User_login))
+            {
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $listUser =  $this->adminService->getlistUser($page);
+                echo "<script>alert('Tạo mới người dùng không thành công!')</script>";
+                include_once('../Views/User/ListUser.php');
+ 
+            }else{
+                $target_dir = "../image/user/"; // Thư mục lưu trữ tệp tin
+                $target_file = $target_dir . basename($_FILES["Avatar"]["name"]); // Đường dẫn của tệp tin sau khi được upload
+                move_uploaded_file($_FILES["Avatar"]["tmp_name"], $target_file);
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $listUser =  $this->adminService->getlistUser($page);
+                echo "<script>alert('Tạo mới người dùng thành công!')</script>";
+                include_once('../Views/User/ListUser.php');
             }
         }
         public function homeHotel(){

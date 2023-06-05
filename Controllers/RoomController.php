@@ -76,7 +76,7 @@
                 $_SESSION['dateend'] = $_POST['dateend'];
                 $_SESSION['adult'] = $_POST['adult'];
                 $_SESSION['children'] = $_POST['children'];
-                if(!$_POST['children'] || !$_POST['adult'] || !$_POST['dateend'] || !$_POST['datestart'])
+                if(!$_POST['dateend'] || !$_POST['datestart'])
                 {
                     $err = "Vui lòng nhập đầy đủ thồng tin";
                     $link = "../Controllers/HotelController.php?action=getHotelHome&id=".$_SESSION['id_hotel']."&isession=1&err=".$err."";
@@ -171,8 +171,8 @@
                 $description = $_POST['description'];
                 $Price = $_POST['Price'];
                 $imgRoom = $_FILES['imgRoom']['name'];
-                $adult = $_POST['numAdults'];
-                $children = $_POST['numChildren'];
+                $adult = $_POST['adults'];
+                $children = $_POST['childrens'];
                 $Edit_hotel = $this->adminService->editRoom($idRoom, $nameRoom, $description, $Price, $imgRoom, $adult, $children);
                 $target_dir = "../image/room/"; // Thư mục lưu trữ tệp tin
                 $target_file = $target_dir . basename($_FILES["imgRoom"]["name"]); // Đường dẫn của tệp tin sau khi được upload
