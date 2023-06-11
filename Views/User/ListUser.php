@@ -23,9 +23,9 @@
 						if($_SESSION['user']['isAdmin'] == 1)
 						{
 							echo "
-							<li> <a href='../Controllers/CityController.php?action=listCity' class='nav-link' style='color: white'>Hotel Manage</a> </li>
-							<li> <a href='../Controllers/UserController.php?action=listUser' class='nav-link' style='color: white'>User Manage</a> </li>
-							<a href='../Controllers/CityController.php?action=listHotel'></a>
+							<li> <a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity' class='nav-link' style='color: white'>Hotel Manage</a> </li>
+							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser' class='nav-link' style='color: white'>User Manage</a> </li>
+							<a href='../../../Hotel-Website/Controllers/CityController.php?action=listHotel'></a>
 							<li><div class='user-menu-u'>
 							<div class='username-u' style='display: contents;' >
 							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
@@ -41,7 +41,7 @@
 							<li> <a href='#about' class='nav-link'>About</a> </li>
 							<li> <a href='#room' class='nav-link'>Rooms</a> </li>
 							<li> <a href='#map' class='nav-link'>Map</a> </li>
-							<li><a href='../Controllers/CityController.php?action=listHotel'></a></li>
+							<li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listHotel'></a></li>
 							<div class='user-menu'>
 							<div class='username'>
 							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
@@ -137,7 +137,7 @@
                   $i = 0;
                   foreach($listUser['users'] as $User)
                   {
-                      $isRoom = $User->getnumRoom() == 0 ? "Không có phòng" : "<a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$User->getId()."'>Danh sách phòng</a>";
+                      $isRoom = "<a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$User->getId()."'>Danh sách phòng</a>";
                       $i++;
                       echo "		
                       <tr>

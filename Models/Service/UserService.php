@@ -29,8 +29,8 @@
             $sql_booking = "SELECT booking.*
             FROM booking
             INNER JOIN room ON booking.idRoom = room.idRoom
-            WHERE room.idHotel = $id_hotel
-            GROUP BY booking.idRoom, booking.idUser
+            WHERE room.idHotel = $id_hotel AND booking.isDelete = 0
+            GROUP BY booking.idRoom, booking.idUser 
             HAVING COUNT(*) = 1
             ";
             $users = [];
@@ -38,6 +38,7 @@
             $i = 0;
             while($row1 = mysqli_fetch_array($result)) {
                 $idUser =  $row1['idUser'];
+                echo $idUser;
                 $sql = "SELECT *FROM user WHERE id = $idUser";
                 $result = mysqli_query($con, $sql);
                 while($row = mysqli_fetch_array($result)){

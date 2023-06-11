@@ -3,6 +3,17 @@
     session_start(); // Khởi tạo session
 }
 ?>
+<?php
+if(isset($_SESSION['user']['isAdmin'])){
+  if($_SESSION['user']['isAdmin'] == 1){
+    $link = '../Controllers/CityController.php?action=listCity';
+    header("Location: $link");
+  }else if($_SESSION['user']['isHotel'] == 1){
+    $link = '../Controllers/UserController.php?action=homeHotel';
+    header("Location: $link");
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -30,6 +41,7 @@
   $username = isset($_SESSION['user']['username']) ? $_SESSION['user']['username'] : '';
   $address = isset($_SESSION['user']['address']) ? $_SESSION['user']['address'] : '';
   $isAdmin = isset($_SESSION['user']['isAdmin'])  ? $_SESSION['user']['isAdmin']: null;
+  $isHotel = isset($_SESSION['user']['isHotel'])  ? $_SESSION['user']['isHotel']: null;
 
 ?>
 <style>
@@ -60,28 +72,44 @@
             <li> <a href='../Views/register.php' class='nav-link'>Register</a> </li>";
           }else if($isAdmin == 1)
             {
+							echo "
+							<li> <a href='../Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
+							<li> <a href='../Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
+							<a href='../Controllers/CityController.php?action=listHotel'></a>
+							<li><div class='user-menu'>
+							<div class='username' >
+							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+							</div>
+								<ul class='menu'>
+									<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+									<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+								</ul>
+							</div></li>";
+            }else if($isHotel == 1){
               echo "
-              <li> <a href='../Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
-              <li> <a href='../Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
-              <a href='../Controllers/CityController.php?action=listHotel'></a>
+              <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel'>Home</a></li>
+              <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Hotel Manage</a></li>
+              <li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>List User</a></li>
+              <li><a href='../../../Hotel-Website/Views/Thongke.php'>Doanh Thu</a></li>
+              <a href='../Controllers/CityController.php?action=listHotel'></a> 
               <li>
               <div class='user-menu'>
               <div class='username'>
               <img src='../../Hotel-Website/image/user/".$srcImg."' alt='' class='avatar'>
               </div>
               <ul class='menu'>
-                  <li><a href='../Controllers/UserController.php?action=detailUser'>Thông tin cá nhân</a></li>
+                  <li><a href='../Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+                  <li><a href='../Controllers/RoomController.php?action=getRoombyUser&id=".$idUser."'>Xem phòng đã đặt</a></li>
                   <li><a href='../Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
               </ul>
             </div>
               </li>";
-            }else if($isAdmin == 0){
+            }else if($isHotel == 0 && $isAdmin == 0){
               echo "
               <li> <a href='#home' class='nav-link'>Home</a> </li>
               <li> <a href='#about' class='nav-link'>About</a> </li>
               <li> <a href='#room' class='nav-link'>Rooms</a> </li>
               <li> <a href='#map' class='nav-link'>Map</a> </li>
-              <a href='../Controllers/CityController.php?action=listHotel'></a> 
               <li>
               <div class='user-menu'>
               <div class='username'>

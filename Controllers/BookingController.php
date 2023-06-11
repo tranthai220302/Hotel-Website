@@ -18,7 +18,21 @@
                     case 'huyphong':
                         $this->huyPhong();
                         break;
+                    case 'thongke':
+                        $this->thongke();
+                        break;
                 }
+            }
+        }
+        public function thongke(){
+            if($_SESSION['login']){
+                $idHotel = $_GET['id'];
+                $date_start = $_POST['date_start'];
+                $date_end = $_POST['date_end'];
+                $data = $this->adminService->dataThongke($idHotel, $date_start, $date_end);
+                $data = json_encode($data);
+                header('Content-Type: application/json');
+                echo $data;
             }
         }
         public function huyPhong(){

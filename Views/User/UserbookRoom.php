@@ -21,40 +21,55 @@
 				<a href="#" class="logo"> <img src="../image/home/logo.png" alt=""> </a>
 				<ul class="nav-menu">
 					<?php
-						if($_SESSION['user']['isAdmin'] == 1)
-						{
+										if($_SESSION['user']['isAdmin'] == 1)
+										{
+											echo "
+											<li> <a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
+											<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
+											<a href='../Controllers/CityController.php?action=listHotel'></a>
+											<li><div class='user-menu'>
+											<div class='username' >
+											<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+											</div>
+												<ul class='menu'>
+													<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+													<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+												</ul>
+											</div></li>";
+										} else if($_SESSION['user']['isAdmin'] == 0 && $_SESSION['user']['isHotel'] == 0){
+											echo "
+											<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=back' class='nav-link'>Home</a> </li>
+											<li> <a href='#about' class='nav-link'>About</a> </li>
+											<li> <a href='#room' class='nav-link'>Rooms</a> </li>
+											<li> <a href='#map' class='nav-link'>Map</a> </li>
+											<li><a href='../Controllers/CityController.php?action=listHotel'></a></li>
+											<div class='user-menu'>
+											<div class='username'>
+											<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+											</div>
+											<ul class='menu'>
+												<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+												<li><a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li>
+												<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+											</ul>
+										</div>";
+						  }else if($_SESSION['user']['isHotel'] == 1){
 							echo "
-							<li> <a href='../../../Hotel-Website/Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>
-							<li> <a href='../../../Hotel-WebsiteControllers/UserController.php?action=listUser' class='nav-link'>User Manage</a> </li>
-							<a href='../Controllers/CityController.php?action=listHotel'></a>
-							<li><div class='user-menu'>
-							<div class='username' >
-							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
-							</div>
-								<ul class='menu'>
-									<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
-									<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
-								</ul>
-							</div></li>";
-						} else if($_SESSION['user']['isAdmin'] == 0){
-							echo "
-							<li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=back' class='nav-link'>Home</a> </li>
-							<li> <a href='#about' class='nav-link'>About</a> </li>
-							<li> <a href='#room' class='nav-link'>Rooms</a> </li>
-							<li> <a href='#map' class='nav-link'>Map</a> </li>
-							<li><a href='../../../Hotel-Website/Controllers/CityController.php?action=listHotel'></a></li>
-							<div class='user-menu'>
-							<div class='username'>
-							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
-							</div>
-							<ul class='menu'>
-								<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
-								<li><a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$_SESSION['user']['id']."'>Xem phòng đã đặt</a></li>
-								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
-							</ul>
-						</div>";
-						}
-					?>
+												<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel'>Home</a></li>
+												<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Hotel Manage</a></li>
+												<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>List User</a></li>
+								<li><a href='../../../Hotel-Website/Views/Thongke.php'>Doanh Thu</a></li>
+												<div class='user-menu'>
+												<div class='username'>
+												<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
+												</div>
+												<ul class='menu'>
+													<li><a href='../../../Hotel-Website/Views/User/ThongtinUser.php'>Thông tin cá nhân</a></li>
+													<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=logout'>Đăng xuất</a></li>
+												</ul>
+											</div>";
+						  }
+									?>
 				</ul>
 			</nav>
 		</div>

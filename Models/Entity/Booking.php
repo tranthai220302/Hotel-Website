@@ -7,7 +7,9 @@
         private $idUser;
         private $adults;
         private $childrens;
-        public function __construct($idRoom, $startDate, $endDate, $idUser, $id, $adults, $childrens)
+        private $price;
+        private $isDelete;
+        public function __construct($idRoom, $startDate, $endDate, $idUser, $id, $adults, $childrens, $price, $isDelete)
         {
             $this->id = $id;
             $this->idRoom = $idRoom;
@@ -16,7 +18,15 @@
             $this->idUser = $idUser;
             $this->adults = $adults;
             $this->childrens = $childrens;
+            $this->price = $price;
+            $this->isDelete = $isDelete;
 
+        }
+        public function getPrice(){
+            return $this->price;
+        }
+        public function getIsDelete(){
+            return $this->isDelete;
         }
         public function getAdults(){
             return $this->adults;

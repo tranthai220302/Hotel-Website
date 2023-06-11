@@ -248,6 +248,7 @@
 								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel'>Home</a></li>
 								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Hotel Manage</a></li>
 								<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>List User</a></li>
+                <li><a href='../../../Hotel-Website/Views/Thongke.php'>Doanh Thu</a></li>
 								<div class='user-menu'>
 								<div class='username'>
 								<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
@@ -288,7 +289,7 @@
                   $i = 0;
                   foreach($users as $User)
                   {
-                      $isRoom = $User->getnumRoom() == 0 ? "Không có phòng" : "<a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$User->getId()."'>Danh sách phòng</a>";
+                      $isRoom = "<a href='../../../Hotel-Website/Controllers/RoomController.php?action=getRoombyUser&id=".$User->getId()."'>Danh sách phòng</a>";
                       $i++;
                       echo "		
                       <tr>

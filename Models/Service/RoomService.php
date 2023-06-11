@@ -16,17 +16,17 @@
             $sql = "SELECT room.*
                     FROM booking
                     JOIN room ON booking.idRoom = room.idRoom
-                    WHERE booking.idUser = $id";
+                    WHERE booking.idUser = $id AND booking.isDelete=0";
             $result = mysqli_query($con, $sql);
             $i = 0;
             $j=0;
             while($row = mysqli_fetch_array($result)) {
                 $rooms[$i++] = new Room($row['idRoom'], $row['nameRoom'], $row['idHotel'], $row['Description'],$row['Price'], $row['imgRoom'], $row['adults'], $row['children'], $row['isbook']);
                 $idRoom = $row['idRoom'];
-                $sql_booking = "SELECT *FROM booking WHERE idUser = $id AND idRoom = $idRoom";
+                $sql_booking = "SELECT *FROM booking WHERE idUser = $id AND idRoom = $idRoom AND isDelete = 0";
                 $result_booking = mysqli_query($con, $sql_booking);
                 while($row_book = mysqli_fetch_array($result_booking)){
-                    $booking[$j++] = new Booking($row_book['id'], $row_book['Date_start'], $row_book['Date_end'], $row_book['idUser'], $row_book['idRoom'], $row_book['adults'], $row_book['childrens']);
+                    $booking[$j++] = new Booking($row_book['id'], $row_book['Date_start'], $row_book['Date_end'], $row_book['idUser'], $row_book['idRoom'], $row_book['adults'], $row_book['childrens'], $row_book['price'], $row_book['isDelete']);
                 }
             }
             if(isset($rooms))
@@ -59,7 +59,7 @@
                 $sql_idRoom = "SELECT room.*
                 FROM booking
                 JOIN room ON booking.idRoom = room.idRoom
-                WHERE booking.Date_end >= STR_TO_DATE('$datestart', '%Y-%m-%d') AND booking.Date_start <= STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children ";
+                WHERE booking.Date_end >= STR_TO_DATE('$datestart', '%Y-%m-%d') AND booking.Date_start <= STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND booking.isDelete = 0";
     
                 $result_idRoom = mysqli_query($con, $sql_idRoom);
                 $id_Room = [];
@@ -69,7 +69,7 @@
                 $sql_room = "SELECT room.*
                 FROM booking
                 JOIN room ON booking.idRoom = room.idRoom
-                WHERE room.price < $search_Val AND booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children 
+                WHERE room.price < $search_Val AND booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND booking.isDelete = 0
                 GROUP BY room.idRoom
                 HAVING COUNT(*) >=1
                 ";
@@ -104,7 +104,7 @@
                     $sql_idRoom = "SELECT room.*
                     FROM booking
                     JOIN room ON booking.idRoom = room.idRoom
-                    WHERE booking.Date_end >= STR_TO_DATE('$datestart', '%Y-%m-%d') AND booking.Date_start <= STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children";
+                    WHERE booking.Date_end >= STR_TO_DATE('$datestart', '%Y-%m-%d') AND booking.Date_start <= STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND booking.isDelete = 0";
         
                     $result_idRoom = mysqli_query($con, $sql_idRoom);
                     $id_Room = [];
@@ -114,7 +114,7 @@
                     $sql_room = "SELECT room.*
                     FROM booking
                     JOIN room ON booking.idRoom = room.idRoom
-                    WHERE room.nameRoom LIKE '%$search_Val%' AND booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children
+                    WHERE room.nameRoom LIKE '%$search_Val%' AND booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND booking.isDelete = 0
                     GROUP BY room.idRoom
                     HAVING COUNT(*) >=1
                     ";
@@ -151,7 +151,7 @@
                     $sql_idRoom = "SELECT room.*
                     FROM booking
                     JOIN room ON booking.idRoom = room.idRoom
-                    WHERE booking.Date_end >= STR_TO_DATE('$datestart', '%Y-%m-%d') AND booking.Date_start <= STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children";
+                    WHERE booking.Date_end >= STR_TO_DATE('$datestart', '%Y-%m-%d') AND booking.Date_start <= STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND booking.isDelete = 0";
         
                     $result_idRoom = mysqli_query($con, $sql_idRoom);
                     $id_Room = [];
@@ -161,7 +161,7 @@
                     $sql_room = "SELECT room.*
                     FROM booking
                     JOIN room ON booking.idRoom = room.idRoom
-                    WHERE room.Description LIKE '%$search_Val%' AND booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children
+                    WHERE room.Description LIKE '%$search_Val%' AND booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND booking.isDelete = 0
                     GROUP BY room.idRoom
                     HAVING COUNT(*) >=1
                     ";
@@ -233,7 +233,7 @@
             $sql_idRoom = "SELECT room.*
             FROM booking
             JOIN room ON booking.idRoom = room.idRoom
-            WHERE booking.Date_end >= STR_TO_DATE('$datestart', '%Y-%m-%d') AND booking.Date_start <= STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children";
+            WHERE booking.Date_end >= STR_TO_DATE('$datestart', '%Y-%m-%d') AND booking.Date_start <= STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children AND booking.isDelete = 0";
 
             $result_idRoom = mysqli_query($con, $sql_idRoom);
             $id_Room = [];
@@ -244,7 +244,7 @@
             $sql_room = "SELECT room.*
             FROM booking
             JOIN room ON booking.idRoom = room.idRoom
-            WHERE booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children GROUP BY room.idRoom";
+            WHERE booking.isDelete = 0 AND booking.Date_end < STR_TO_DATE('$datestart', '%Y-%m-%d') OR booking.Date_start > STR_TO_DATE('$dateend', '%Y-%m-%d') AND room.adults >= $adult AND room.children >= $children GROUP BY room.idRoom ";
 
             $result = mysqli_query($con, $sql_room);
             while($row = mysqli_fetch_array($result)) {

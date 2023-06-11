@@ -244,6 +244,7 @@ header ul li a:hover {
 							<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=homeHotel'>Home</a></li>
 							<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=home1'>Hotel Manage</a></li>
 							<li><a href='../../../Hotel-Website/Controllers/UserController.php?action=userbookRoom'>List User</a></li>
+              <li><a href='../../../Hotel-Website/Views/Thongke.php'>Doanh Thu</a></li>
 							<div class='user-menu'>
 							<div class='username'>
 							<img src='../../../Hotel-Website/image/user/".$_SESSION['user']['avatar']."' alt='' class='avatar'>
