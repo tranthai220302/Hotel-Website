@@ -150,7 +150,7 @@
 					<img src='../../../Hotel-Website/image/room/".$room->getImg()."'>
 					<div class = 'content'>
 						<h2>".$room->getnameRoom()."</h2>
-						<div class='rating'>Giá: ".$room->getPrice()."</div>
+						<div class='rating'>Giá: ".$room->getPrice()."$</div>
 						<p>Adults: ".$room->getAdult()."</p>
 						<p>Children: ".$room->getChildren()."</p>
 						<p>Status: ".$isbook."</p>
@@ -247,7 +247,7 @@
 					<img src='../../../Hotel-Website/image/room/".$room->getImg()."'>
 					<div class = 'content'>
 						<h2>".$room->getnameRoom()."</h2>
-						<div class='rating'>Giá: ".$room->getPrice()."</div>
+						<div class='rating'>Giá: ".$room->getPrice()."$</div>
 						<p>Adults: ".$room->getAdult()."</p>
 						<p>Children: ".$room->getChildren()."</p>
 						<p>Status: ".$isbook."</p>
@@ -344,7 +344,7 @@
 	?>
 	<script>
 		function confirmDelete() {
-			return confirm("Bạn có muốn xóa khách sạn này không?");
+			return confirm("Bạn có muốn xóa phòng này không?");
 		}
 	</script>
 		</div>

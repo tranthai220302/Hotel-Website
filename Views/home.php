@@ -8,7 +8,7 @@ if(isset($_SESSION['user']['isAdmin'])){
   if($_SESSION['user']['isAdmin'] == 1){
     $link = '../Controllers/CityController.php?action=listCity';
     header("Location: $link");
-  }else if($_SESSION['user']['isHotel'] == 1){
+  }else if(isset($_SESSION['user']['isHotel']) && $_SESSION['user']['isHotel'] == 1){
     $link = '../Controllers/UserController.php?action=homeHotel';
     header("Location: $link");
   }

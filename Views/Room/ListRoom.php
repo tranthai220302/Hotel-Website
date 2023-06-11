@@ -92,7 +92,7 @@
 				<img src='../../../Hotel-Website/image/room/".$room->getImg()."'>
 				<div class = 'content'>
 					<h2>".$room->getnameRoom()."</h2>
-					<div class='rating'>Giá: ".$room->getPrice()."</div>
+					<div class='rating'>Giá: ".$room->getPrice()."$</div>
 					<p>Adults: ".$room->getAdult()."</p>
 					<p>Children: ".$room->getChildren()."</p>
 					<p>Status: ".$isbook."</p>
