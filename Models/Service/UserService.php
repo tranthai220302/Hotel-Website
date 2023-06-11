@@ -26,22 +26,25 @@
         public function UserbookRoom($id_hotel){
             $con = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_select_db($con,"quanlyks");
-            $sql_booking = "SELECT booking.*
-            FROM booking
-            INNER JOIN room ON booking.idRoom = room.idRoom
-            WHERE room.idHotel = $id_hotel AND booking.isDelete = 0
-            GROUP BY booking.idRoom, booking.idUser 
-            HAVING COUNT(*) = 1
-            ";
+            // $sql_booking = "SELECT booking.*
+            // FROM booking
+            // INNER JOIN room ON booking.idRoom = room.idRoom
+            // WHERE room.idHotel = $id_hotel AND booking.isDelete = 0
+            // GROUP BY booking.idRoom, booking.idUser 
+            // HAVING COUNT(*) = 1
+            // ";
+            $sql_booking = "SELECT DISTINCT b.idUser
+            FROM booking b
+            JOIN room r ON b.idRoom = r.idRoom
+            WHERE r.idHotel = $id_hotel AND b.isDelete = 0";
             $users = [];
             $result = mysqli_query($con, $sql_booking);
             $i = 0;
             while($row1 = mysqli_fetch_array($result)) {
                 $idUser =  $row1['idUser'];
-                echo $idUser;
                 $sql = "SELECT *FROM user WHERE id = $idUser";
-                $result = mysqli_query($con, $sql);
-                while($row = mysqli_fetch_array($result)){
+                $result_user = mysqli_query($con, $sql);
+                while($row = mysqli_fetch_array($result_user)){
                     $users[$i++] = new User($row['id'], $row['username'], $row['password'], $row['email'], $row['isAdmin'], $row['address'], $row['phoneNumber'], $row['img'], $row['firstName'], $row['lastName'], $row['numberRoom'], $row['isHotel']);     
                 }
             }

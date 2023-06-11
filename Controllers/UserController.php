@@ -173,7 +173,7 @@
                 $users = "Không có khách hàng đặt phòng!";
                 include_once('../Views/Employee/ListCustomer.php');
             }else{
-                // include_once('../Views/Employee/ListCustomer.php');
+                include_once('../Views/Employee/ListCustomer.php');
             }
         }
         public function deleteUser()
