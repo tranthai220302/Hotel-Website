@@ -30,7 +30,15 @@
 				<a href="#" class="logo"> <img src="../image/home/logo.png" alt=""> </a>
 				<ul class="nav-menu">
 					<?php
-						if($_SESSION['user']['isAdmin'] == 1)
+            if(!isset($_SESSION['user']['isAdmin'])){
+              echo "
+              <li> <a href='../../../Hotel-Website/Controllers/UserController.php?action=back' class='nav-link'>Home</a> </li>
+              <li> <a href='../Views/login.php' class='nav-link'>Login</a> </li>
+              <li> <a href='../Views/register.php' class='nav-link'>Register</a> </li>
+              ";
+            }
+                    
+						else if($_SESSION['user']['isAdmin'] == 1)
 						{
 							echo "
 							<li> <a href='../../Controllers/CityController.php?action=listCity' class='nav-link'>Hotel Manage</a> </li>

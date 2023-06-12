@@ -20,6 +20,14 @@ $i = 0;
 				<a href="#" class="logo"> <img src="../image/home/logo.png" alt=""> </a>
 				<ul class="nav-menu">
 					<?php
+                    if(!isset($_SESSION['user']['isAdmin'])){
+                      echo "
+                      <li> <a href='../../../Hotel-Website/Controllers/UserTìmontroller.php?action=back' class='nav-link'>Home</a> </li>
+                      <li> <a href='../Views/login.php' class='nav-link'>Login</a> </li>
+                      <li> <a href='../Views/register.php' class='nav-link'>Register</a> </li>
+                      ";
+                    }
+                      else
 						if($_SESSION['user']['isAdmin'] == 1)
 						{
 							echo "
@@ -83,7 +91,9 @@ $i = 0;
             </div>
             <button style="margin-top: 15px;">Search</button>
               </div>
+              <a href="../../Hotel-Website/Controllers/HotelController.php?action=search&id=<?php echo $_SESSION['id_city_search'] ?>&is=1" style="margin-top: 15px;"><i class="fa-solid fa-backward">  Back</i></a>
           </form>
+          
 
   <table style="margin-top: 50px;">
     <thead>

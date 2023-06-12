@@ -302,10 +302,9 @@
         }
         public function Back()
         {
-            if($_SESSION['login'] && $_SESSION['user']['isAdmin'] == 0 && $_SESSION['user']['isHotel'] == 0)
-            {
+
             include_once('../Views/home.php');
-            }
+
 
         }
 
